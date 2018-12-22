@@ -8,8 +8,8 @@ var js_cdn = [
     "https://unpkg.com/vue/dist/vue.js",
     //element-ui
     "https://unpkg.com/element-ui/lib/index.js",
-    "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js",
-    "https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"
+    "https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js",
+    "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"
 ];
 
 for(var i in css_cdn){
