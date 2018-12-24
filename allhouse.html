@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <script src="js/header.js"></script>
-    <script src="js/component/jiarunav.js"></script>
+    <script src="js/allhouse.js"></script>
+    
+    <script>
+    console.log(g_ajax_post('/house'));
+    </script>
 </head>
 
 <body>
@@ -13,7 +17,7 @@
         <el-row>
             <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
               <el-card :body-style="{ padding: '0px' }">
-                <img src="~examples/assets/images/hamburger.png" class="image">
+                <img src="http://img2.imgtn.bdimg.com/it/u=690139000,2305134970&fm=26&gp=0.jpg" class="image">
                 <div style="padding: 14px;">
                   <span>好吃的汉堡</span>
                   <div class="bottom clearfix">
@@ -28,5 +32,6 @@
 </body>
 
 <script src="js/footer.js"></script>
+<script src="js/component/jiarunav.js"></script>
 
 </html>
