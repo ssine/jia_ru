@@ -10,7 +10,7 @@ var js_cdn = [
     //element-ui
     "https://cdn.bootcss.com/element-ui/2.4.11/index.js",
     "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js",
-    "js/back_end_data.json",
+    "js/back_end_data.js",
     "js/base.js",
 ];
 
