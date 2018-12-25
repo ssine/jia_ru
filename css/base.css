@@ -4,3 +4,7 @@
     left: 0px;
     width: 100%;
 }
+
+.ui.menu {
+    margin-bottom: 0px !important;
+}
