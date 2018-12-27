@@ -98,7 +98,7 @@ there_formaldehyde：是否有甲醛
 ```json
 [{
 	"id": 1,
-	"img": "pronhub.com/sporthouse.jpg",
+	"img": "http://www.pronhub.com/sporthouse.jpg",
 	"name": "紫禁城西部湖中央超豪华2居室",
 	"description": "长者故居，你值得拥有",
 	"tag": "独卫_集体供暖_独立阳台",
@@ -106,7 +106,7 @@ there_formaldehyde：是否有甲醛
 	"there_formaldehyde": 0
 }, {
 	"id": 2,
-	"img": "pronhub.com/sporthouse.jpg",
+	"img": "http://www.pronhub.com/sporthouse.jpg",
 	"name": "秦城1居室",
 	"description": "7x24小时专人守护",
 	"tag": "独卫_集体供暖_独立阳台",
