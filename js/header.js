@@ -2,6 +2,7 @@ var css_cdn = [
     
     "https://cdn.bootcss.com/element-ui/2.4.11/theme-chalk/index.css",
     "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css",
+    "css/base.css",
 
 ];
 var js_cdn = [

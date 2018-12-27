@@ -3,8 +3,8 @@
     top: 0px;
     left: 0px;
     width: 100%;
+    
 }
-
-.ui.menu {
-    margin-bottom: 0px !important;
+.logo {
+    width: 80px;
 }

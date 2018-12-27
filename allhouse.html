@@ -3,35 +3,79 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/allhouse.css">
     <script src="js/header.js"></script>
     <script src="js/allhouse.js"></script>
-    
-    <script>
-    console.log(g_ajax_post('/house'));
-    </script>
+    <script src="js/component/jiarunav.js"></script>
+    <script src="js/component/goodscard.js"></script>
+
 </head>
 
 <body>
     <div id="app">
         <jiarunav></jiarunav>
-        <el-row>
-            <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
-              <el-card :body-style="{ padding: '0px' }">
-                <img src="http://img2.imgtn.bdimg.com/it/u=690139000,2305134970&fm=26&gp=0.jpg" class="image">
-                <div style="padding: 14px;">
-                  <span>好吃的汉堡</span>
-                  <div class="bottom clearfix">
-                    <time class="time">{{ currentDate }}</time>
-                    <el-button type="text" class="button">操作按钮</el-button>
-                  </div>
+        <div class="allhouse">
+            <div>
+                <div class="ui center aligned basic segment search">
+                    <img class="logo" src="img/logo.png" />
+                    <div class="ui icon input">
+                        <input class="prompt" type="text" placeholder="西二旗...">
+                        <i class="search icon"></i>
+                    </div>
+                    <div class="results"></div>
                 </div>
-              </el-card>
-            </el-col>
-          </el-row>
+            </div>
+            
+            <div v-for="item in house_items" class="ui divided items segment">
+                <div class="item">
+                    <div class="image">
+                        <img :src="item.img">
+                    </div>
+                    <div class="content">
+                        <a class="header">{{item.name}}</a>
+                        <img width="64" height="15" alt="" src="http://static8.ziroom.com/phoenix/pc/images/201810/img_deepbreath_unselected_90_2x2.png">
+                        <div class="meta">
+                            <span class="cinema">{{item.annote}}</span>
+                        </div>
+                        <div class="description">
+                            <p></p>
+                        </div>
+                        <div class="extra">
+                            <div class="ui label">IMAX</div>
+                            <div class="ui label"><i class="globe icon"></i> 附加的语言</div>
+                            <div class="ui right floated primary button">
+                                购票
+                                <i class="right chevron icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 
-<script src="js/footer.js"></script>
-<script src="js/component/jiarunav.js"></script>
+<script>
+var va = new Vue({
+    el: '#app',
+    data:{
+            house_items:[
+                {message:"Test one",id:"1"},
+                {message:"Test two",id:"2"},
+                {message:"Test three",id:"3"}
+            ]
+        },
+    created: function() {
+        var da = g_ajax_post('/house');
+        console.log(da);
+        this.house_items = da;
+        
+    }
+    
+});
+
+
+</script>
 
 </html>
