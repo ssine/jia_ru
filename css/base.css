@@ -3,8 +3,18 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    
 }
+
 .logo {
     width: 80px;
+}
+
+.ui.menu > .header.item {
+    background: url("../img/logo.png") no-repeat center;
+    background-size: 80% 80%;
+    width: 60px;
+}
+
+.ui.menu {
+    height: 60px;
 }
