@@ -17,5 +17,9 @@ back_end_data = {
             "price": 1887,
             "annote": "自如第三好房",
         },
-    ]
+    ],
+
+    "/data/user-info": {
+        
+    }
 }

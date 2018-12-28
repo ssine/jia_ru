@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/user-info.css">
+  <script src="js/header.js"></script>
+  <script src="js/user-info.js"></script>
+  <script src="js/component/jiarunav.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <jiarunav></jiarunav>
+
+
+    <div class="ui two column grid container">
+
+      <div class="row">
+        <h2 class="ui header">
+          <i class="settings icon"></i>
+          <div class="content">
+            账户信息
+            <div class="sub header">查看并修改您的资料</div>
+          </div>
+        </h2>
+        <div class="column"></div>
+      </div>
+
+      <div class="row">
+        <div class="column">用户名</div>
+        <div class="column">blah</div>
+      </div>
+      <div class="row">
+        <div class="column">新密码</div>
+        <input class="column">
+      </div>
+      <div class="row">
+        <div class="column">姓名</div>
+        <div class="column">blah</div>
+      </div>
+      <div class="row">
+        <div class="column">证件类型</div>
+        <div class="column">blah</div>
+      </div>
+      <div class="row">
+        <div class="column">证件号码</div>
+        <div class="column">blah</div>
+      </div>
+      <div class="row">
+        <div class="column">手机号码</div>
+        <input class="column">
+      </div>
+      <div class="row">
+        <div class="column">级别</div>
+        <div class="column">blah</div>
+      </div>
+      <div class="row">
+        <div class="column">注册城市</div>
+        <div class="column">blah</div>
+      </div>
+      <div class="row">
+        <div class="column">注册时间</div>
+        <div class="column">blah</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        visible: false,
+      }
+    }
+  });
+
+</script>
+
+</html>
