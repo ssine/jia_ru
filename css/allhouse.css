@@ -2,6 +2,7 @@
     width: 1200px;
     margin: 0 auto;
     position: relative;
+    
 }
 ul{
     list-style: none outside none;
@@ -29,4 +30,34 @@ ul{
 }
 .condition-name{
     font-weight: bold;
+}
+.page_num_box{
+    text-align: center;
+}
+.page_num_box .page_num_item{
+    display: inline-block;
+    border: solid 1px #ddd;
+    border-radius: 3px;
+    color: #666;
+    padding: 0 12px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 2px;
+    background: #fff;
+}
+.page_num_box .page_num_item.active{
+    border: solid 1px #ffa000;
+    color: #fff;
+    background: #ffa000;
+}
+.page_num_box .page_num_item:hover{
+    border: solid 1px #ffa000;
+}
+.price{
+    font-size: 30px;
+    color: #ffa000;
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 5px;
+    height: 120px;
 }
