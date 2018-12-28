@@ -90,6 +90,8 @@ description: 房屋描述
 
 tag：标签，以下划线_隔开
 
+area：房屋面积
+
 price：房屋价格
 
 there_formaldehyde：是否有甲醛
@@ -102,6 +104,7 @@ there_formaldehyde：是否有甲醛
 	"name": "紫禁城西部湖中央超豪华2居室",
 	"description": "长者故居，你值得拥有",
 	"tag": "独卫_集体供暖_独立阳台",
+    "area": 200,
 	"price": 30000,
 	"there_formaldehyde": 0
 }, {
@@ -110,6 +113,7 @@ there_formaldehyde：是否有甲醛
 	"name": "秦城1居室",
 	"description": "7x24小时专人守护",
 	"tag": "独卫_集体供暖_独立阳台",
+    "area": 10,
 	"price": 1000,
 	"there_formaldehyde": 0
 }]
