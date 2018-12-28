@@ -3,60 +3,30 @@
     margin: 0 auto;
     position: relative;
 }
+ul{
+    list-style: none outside none;
+}
 .condition-box {
     
 }
 
-* {
-    padding: 0;
-    margin: 0;
-}
-
-.box {
-    width: 800px;
-    height: 200px;
-    margin: 0 auto;
-    border: 1px solid #000;
-}
-
-.tabs li {
-    float: left;
-    margin-right: 8px;
-    list-style: none;
-}
-
-.tabs .tab-link {
-    display: block;
-    width: 250px;
-    height: 49px;
-    text-align: center;
-    line-height: 49px;
-    background-color: #5597B4;
+.tab-link.active {
     color: #fff;
-    text-decoration: none;
-}
-
-.tabs .tab-link.active {
-    height: 47px;
-    border-bottom: 2px solid #E35885;
-    transition: .3s;
-}
-
-.cards {
-    float: left;
-}
-
-.cards .tab-card {
-    display: none;
-}
-
-.clearfix:after {
-    content: "";
-    display: block;
-    height: 0;
-    clear: both;
+    background: #ffa000;
+    border-radius: 5px;
+    padding: 0 5px;
 }
 
 .clearfix {
-    zoom: 1;
+    line-height: 20px;
+    padding: 0 0 7px 0;
+    border-bottom: dotted 1px #ccc;
+    position: relative;
+    display: block;
+}
+.tab-item{
+    display: flex;
+}
+.condition-name{
+    font-weight: bold;
 }
