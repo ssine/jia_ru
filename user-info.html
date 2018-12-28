@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/user-info.css">
   <script src="js/header.js"></script>
-  <script src="js/user-info.js"></script>
+  <!-- <script src="js/user-info.js"></script> -->
   <script src="js/component/jiarunav.js"></script>
 </head>
 
@@ -29,7 +29,7 @@
 
       <div class="row">
         <div class="column">用户名</div>
-        <div class="column">blah</div>
+        <div class="column">{{this.user.nickname}}</div>
       </div>
       <div class="row">
         <div class="column">新密码</div>
@@ -37,31 +37,31 @@
       </div>
       <div class="row">
         <div class="column">姓名</div>
-        <div class="column">blah</div>
+        <div class="column">{{this.user.name}}</div>
       </div>
       <div class="row">
         <div class="column">证件类型</div>
-        <div class="column">blah</div>
+        <div class="column">{{this.user.id_type}}</div>
       </div>
       <div class="row">
         <div class="column">证件号码</div>
-        <div class="column">blah</div>
+        <div class="column">{{this.user.id_number}}</div>
       </div>
       <div class="row">
         <div class="column">手机号码</div>
-        <input class="column">
+        <input class="column" :value="this.user.phone">
       </div>
       <div class="row">
         <div class="column">级别</div>
-        <div class="column">blah</div>
+        <div class="column">{{this.user.grade}}</div>
       </div>
       <div class="row">
         <div class="column">注册城市</div>
-        <div class="column">blah</div>
+        <div class="column">{{this.user.register_city}}</div>
       </div>
       <div class="row">
         <div class="column">注册时间</div>
-        <div class="column">blah</div>
+        <div class="column">{{this.user.register_time}}</div>
       </div>
     </div>
 
@@ -69,14 +69,16 @@
 </body>
 
 <script>
-  new Vue({
-    el: '#app',
-    data: function () {
-      return {
-        visible: false,
-      }
-    }
-  });
+
+new Vue({
+  el: '#app',
+  data: {
+  },
+  created: function() {
+    var da = g_ajax_post('/data/user-info');
+    this.user = da;
+  }
+});
 
 </script>
 
