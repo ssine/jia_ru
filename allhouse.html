@@ -15,7 +15,6 @@
     <div id="app">
         <jiarunav></jiarunav>
         <div class="allhouse">
-
             <div>
                 <div class="ui center aligned basic segment search">
                     <img class="logo" src="img/logo.png" />
@@ -26,19 +25,15 @@
                     <div class="results"></div>
                 </div>
             </div>
-            <div class="condition-box box">
-                <ul class="tabs clearfix">
-                    <li v-for="(tab,index) in tabs">
-                    <li v-for="(tabitem,indexitem) in tab.items">
-                        <a href="#" class="tab-link" @click="tabsSwitch(indexitem)" v-bind:class="{active:tabitem.isActive}">{{tabitem.name}}</a>
-                    </li>
-                    </li>
+            <div class="condition-box ui raised segment">
+                <ul class="clearfix">
+                    <dl class="tab-item ui segment" v-for="(tab,index) in tabs">
+                        <span class="condition-name">{{tab.name}}:</span>
+                        <dd v-for="(tabitem,indexitem) in tab.items">
+                            <a href="#" class="tab-link" @click="tabsSwitch(index,indexitem)" v-bind:class="{active:tabitem.isActive}">{{tabitem.name}}</a>
+                        </dd>
+                    </dl>
                 </ul>
-                <div class="cards">
-                    <div class="tab-card" style="display: block;">这里是HTML教程</div>
-                    <div class="tab-card">欢迎来到CSS模块</div>
-                    <div class="tab-card">嗨，这里是Vue</div>
-                </div>
             </div>
             <div v-for="item in house_items" class="ui divided items segment">
                 <div class="item">
@@ -65,23 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ui pagination menu">
-                <a class="active item">
-                    1
-                </a>
-                <div class="disabled item">
-                    ...
-                </div>
-                <a class="item">
-                    10
-                </a>
-                <a class="item">
-                    11
-                </a>
-                <a class="item">
-                    12
-                </a>
-            </div>
+            
         </div>
 
     </div>
@@ -110,27 +89,63 @@
                     name: "30平米以上",
                     isActive: false
                 }, ]
+            },{
+                name: "价格",
+                items: [{
+                    name: "不限",
+                    isActive: true
+                }, {
+                    name: "2000以下",
+                    isActive: false
+                }, {
+                    name: "2000~4000",
+                    isActive: false
+                }, {
+                    name: "4000以上",
+                    isActive: false
+                },
+                ]
+            },{
+                name: "面积",
+                items: [{
+                    name: "不限",
+                    isActive: true
+                }, {
+                    name: "10平米以下",
+                    isActive: false
+                }, {
+                    name: "10-20平米",
+                    isActive: false
+                }, {
+                    name: "20-30平米",
+                    isActive: false
+                }, {
+                    name: "30平米以上",
+                    isActive: false
+                }, ]
             }]
 
         },
+        methods: {
+            tabsSwitch: function (index, tabIndex) {
+                var items = this.$data.tabs[index].items;
+                
+                items[tabIndex].isActive = true;
+
+                for (var itemindex in items) {
+                    if (itemindex == tabIndex)
+                        continue;
+                    items[itemindex].isActive = false;
+                }
+            }
+        },
         created: function () {
             var da = g_ajax_post('/house');
-            console.log(da);
             this.house_items = da;
 
         },
-        tabsSwitch: function (tabIndex) {
 
-            var tabCardCollection = document.querySelectorAll(".tab-card"),
-                len = tabCardCollection.length;
 
-            for (var i = 0; i < len; i++) {
-                tabCardCollection[i].style.display = "none";
-                this.tabsName[i].isActive = false;
-            }
-            this.tabsName[tabIndex].isActive = true;
-            tabCardCollection[tabIndex].style.display = "block";
-        }
 
     });
 </script>
