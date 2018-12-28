@@ -12,9 +12,10 @@
 <body>
   <div id="app">
     <jiarunav></jiarunav>
-    <div class="ui middle aligned center aligned grid">
+
+    <div class="ui middle aligned center aligned grid" id="login-form">
       <div class="column">
-        <h2 class="ui teal image header">
+        <h2 class="ui violet header">
           <div class="content">
             请先登录
           </div>
@@ -33,19 +34,19 @@
                 <input type="password" name="password" placeholder="密码">
               </div>
             </div>
-            <div class="ui fluid large teal submit button">登录</div>
+            <div class="ui fluid large violet submit button">登录</div>
           </div>
-
+          
           <div class="ui error message"></div>
-
+          
         </form>
-
+        
         <div class="ui message">
           还没有账号? <a href="#">注册</a>
         </div>
       </div>
     </div>
-
+      
   </div>
 </body>
 
@@ -58,6 +59,10 @@
       }
     }
   });
+
+  window.onload = () => {
+    $('#form-container').width = document.body.clientHeight& - 60;
+  }
 </script>
 
 </html>

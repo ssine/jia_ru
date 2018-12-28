@@ -1,3 +1,15 @@
 .column {
     max-width: 450px;
 }
+
+#login-form {
+    height: 70%;
+}
+
+body {
+    height: 100%;
+}
+
+#app {
+    height: 100%;
+}
