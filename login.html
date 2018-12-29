@@ -20,21 +20,21 @@
             请先登录
           </div>
         </h2>
-        <form class="ui large form">
+        <form id="lgfm" class="ui large form">
           <div class="ui stacked segment">
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="email" placeholder="邮箱地址">
+                <input id="username" type="text" name="username" placeholder="用户名">
               </div>
             </div>
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon"></i>
-                <input type="password" name="password" placeholder="密码">
+                <input id="password" type="password" name="password" placeholder="密码">
               </div>
             </div>
-            <div class="ui fluid large violet submit button">登录</div>
+            <div class="ui fluid large violet submit button" onclick="login();">登录</div>
           </div>
           
           <div class="ui error message"></div>
@@ -51,14 +51,30 @@
 </body>
 
 <script>
-  new Vue({
-    el: '#app',
-    data: function () {
-      return {
-        visible: false,
-      }
+new Vue({
+  el: '#app',
+  data: function () {
+    return {
+      visible: false,
     }
-  });
+  }
+});
+
+function login() {
+  $.post(
+    '/operation/login',
+    {
+      username: username.value,
+      password: password.value 
+    },
+    function(res) {
+      if (res.success) {
+        window.location.href = "/index.html";
+      }
+    },
+    "json"
+  )
+}
 
 </script>
 

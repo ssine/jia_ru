@@ -173,7 +173,7 @@ URL: `/data/user-info`
 
 <table>
 <tr><th>key name</th><th>value description</th></tr>
-<tr><td>nickname</td><td>用户名</td></tr>
+<tr><td>username</td><td>用户名</td></tr>
 <tr><td>password</td><td>密码（明文）</td></tr>
 <tr><td>name</td><td>姓名</td></tr>
 <tr><td>id_type</td><td>证件类型</td></tr>
@@ -188,7 +188,7 @@ URL: `/data/user-info`
 
 ```json
 {
-    "nickname": "六小龄童",
+    "username": "六小龄童",
     "name": "章金莱",
     "id_type": "身份证号",
     "id_number": "233233233323232333",
@@ -245,12 +245,13 @@ URL: `/operation/register`
 
 <table>
 <tr><th>key name</th><th>value description</th></tr>
-<tr><td>nickname</td><td>用户名</td></tr>
+<tr><td>username</td><td>用户名</td></tr>
 <tr><td>password</td><td>密码（明文）</td></tr>
 <tr><td>name</td><td>姓名</td></tr>
 <tr><td>id_type</td><td>证件类型</td></tr>
 <tr><td>id_number</td><td>证件号码</td></tr>
 <tr><td>phone</td><td>11位手机号码</td></tr>
+<tr><td>city</td><td>所在城市（参见login.html里那一长串）</td></tr>
 </table>
 
 **Response**:
@@ -258,6 +259,7 @@ URL: `/operation/register`
 <table>
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>success</td><td>true / false</td></tr>
+<tr><td>error_msg</td><td>注册失败时，返回失败原因</td></tr>
 </table>
 
 ---
@@ -277,4 +279,5 @@ URL: `/modify/user-info`
 <table>
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>success</td><td>true / false</td></tr>
+<tr><td>error_msg</td><td>修改失败时，返回失败原因</td></tr>
 </table>
