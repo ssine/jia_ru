@@ -20,7 +20,7 @@ back_end_data = {
     ],
 
     "/data/user-info": {
-        "nickname": "六小龄童",
+        "username": "六小龄童",
         "name": "章金莱",
         "id_type": "身份证号",
         "id_number": "233233233323232333",

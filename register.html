@@ -20,19 +20,23 @@
 
           <div class="field">
             <label>用户名</label>
-            <input type="text" name="user-name" placeholder="用户名">
+            <input id="username" type="text" placeholder="用户名">
           </div>
           <div class="field">
             <label>登陆密码</label>
-            <input type="text" name="user-name" placeholder="登陆密码">
+            <input id="password" type="password" placeholder="登陆密码">
+          </div>
+          <div class="field">
+            <label>重复密码</label>
+            <input id="password_rep" type="password" placeholder="重复密码">
           </div>
           <div class="field">
             <label>姓名</label>
-            <input type="text" name="user-name" placeholder="姓名">
+            <input id="name" type="text" placeholder="姓名">
           </div>
           <div class="field">
             <label>证件类型</label>
-            <select class="ui fluid dropdown" id="identity">
+            <select class="ui fluid dropdown" id="id_type">
               <option value="id">身份证号</option>
               <option value="student-id">学生证号</option>
               <option value="passport">护照</option>
@@ -40,17 +44,16 @@
           </div>
           <div class="field">
             <label>证件号码</label>
-            <input type="text" name="user-name" placeholder="证件号码">
+            <input id="id_number" type="text" placeholder="证件号码">
           </div>
           <div class="field">
             <label>手机号码</label>
-            <input type="text" name="user-name" placeholder="手机号码">
+            <input id="phone" type="text" placeholder="手机号码">
           </div>
           <div class="field">
             <label>所在城市</label>
             <div class="ui fluid search selection dropdown" id="city">
-              <input type="hidden" name="user">
-              <i class="dropdown icon"></i>
+              <input id="register_city" type="hidden" class="dropdown icon"></i>
               <div class="default text">选择城市</div>
               <div class="menu">
                 <div class="item" data-value="北京市">
@@ -2042,7 +2045,7 @@
               </div>
             </div>
           </div>
-
+          <div class="ui fluid large violet submit button" onclick="regist();">注册</div>
 
         </form>  
       </div>
@@ -2052,17 +2055,39 @@
 </body>
 
 <script>
-  new Vue({
-    el: '#app',
-    data: function () {
-      return {
-        visible: false,
-      }
+new Vue({
+  el: '#app',
+  data: function () {
+    return {
+      visible: false,
     }
-  });
+  }
+});
 
 $('#identity').dropdown();
 $('#city').dropdown();
+
+function regist() {
+  $.post(
+    '/operation/register',
+    {
+      username: username.value,
+      password: password.value,
+      name: name.value,
+      id_type: id_type.value,
+      id_number: id_number.value,
+      phone: phone.value,
+      register_city: register_city.value
+    },
+    function(res) {
+      if (res.success) {
+        window.location.href = "/login.html";
+      }
+    },
+    "json"
+  )
+}
+
 </script>
 
 </html>
