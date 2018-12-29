@@ -1,0 +1,9 @@
+.house{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.houseimg{
+    width: 400px;
+    height: 300px;
+}

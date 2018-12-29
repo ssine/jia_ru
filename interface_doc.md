@@ -58,7 +58,7 @@ range_of_area: 面积范围
 
 4：30以上
 
-there_formaldehyde: 是否有甲醛
+formaldehyde: 是否有甲醛
 
 0：不限
 
@@ -75,7 +75,7 @@ there_formaldehyde: 是否有甲醛
     "district":2,
     "range_of_prices":0,
     "range_of_area":4,
-    "there_formaldehyde":1
+    "formaldehyde":1
 }
 ```
 
@@ -92,13 +92,13 @@ name: 房屋名字
 
 description: 房屋描述
 
-tag：标签，以下划线_隔开
+tag：标签，一般为多个
 
 area：房屋面积
 
 price：房屋价格
 
-there_formaldehyde：是否有甲醛
+formaldehyde：是否有甲醛
 
 ##### example
 
@@ -108,18 +108,18 @@ there_formaldehyde：是否有甲醛
     "img": "http://www.pronhub.com/sporthouse.jpg",
     "name": "紫禁城西部湖中央超豪华2居室",
     "description": "长者故居，你值得拥有",
-    "tag": "独卫_集体供暖_独立阳台",
+    "tag": ["独卫","集体供暖","独立阳台"],
     "area": 200,
     "price": 30000,
-    "there_formaldehyde": 0
+    "formaldehyde": 0
 }, {
     "id": 2,
     "img": "http://www.pronhub.com/sporthouse.jpg",
     "name": "秦城1居室",
     "description": "7x24小时专人守护",
-    "tag": "独卫_集体供暖_独立阳台",
+    "tag": ["独卫","集体供暖","独立阳台"],
     "area": 10,
     "price": 1000,
-    "there_formaldehyde": 0
+    "formaldehyde": 0
 }]
 ```
