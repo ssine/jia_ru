@@ -11,8 +11,11 @@
 **接口完成情况**:
 
 - [ ] `/gethouselist`
-- [ ] `/data/user`
+- [ ] `/data/user-info`
+- [ ] `/query/user-exist`
 - [ ] `/operation/login`
+- [ ] `/operation/register`
+- [ ] `/modify/user-info`
 - [x] `/test`
 
 接口声明样例：
@@ -171,6 +174,7 @@ URL: `/data/user-info`
 <table>
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>nickname</td><td>用户名</td></tr>
+<tr><td>password</td><td>密码（明文）</td></tr>
 <tr><td>name</td><td>姓名</td></tr>
 <tr><td>id_type</td><td>证件类型</td></tr>
 <tr><td>id_number</td><td>证件号码</td></tr>
@@ -197,6 +201,24 @@ URL: `/data/user-info`
 
 ---
 
+URL: `/query/user-exist`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>username</td><td>用户名</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>exist</td><td>该用户名是否已存在（true / false）</td></tr>
+</table>
+
+---
+
 URL: `/operation/login`
 
 **Request**:
@@ -212,6 +234,47 @@ URL: `/operation/login`
 <table>
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>success</td><td>true / false</td></tr>
+<tr><td>error_msg</td><td>登录失败时，返回失败原因</td></tr>
 </table>
 
 ---
+
+URL: `/operation/register`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>nickname</td><td>用户名</td></tr>
+<tr><td>password</td><td>密码（明文）</td></tr>
+<tr><td>name</td><td>姓名</td></tr>
+<tr><td>id_type</td><td>证件类型</td></tr>
+<tr><td>id_number</td><td>证件号码</td></tr>
+<tr><td>phone</td><td>11位手机号码</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>success</td><td>true / false</td></tr>
+</table>
+
+---
+
+URL: `/modify/user-info`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>phone</td><td>新手机号码</td></tr>
+<tr><td>password</td><td>新密码（明文）</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>success</td><td>true / false</td></tr>
+</table>
