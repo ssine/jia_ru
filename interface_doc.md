@@ -10,9 +10,9 @@
 
 **接口完成情况**:
 
-- [ ] `/operation/login`
-- [ ] `/data/user`
 - [ ] `/gethouselist`
+- [ ] `/data/user`
+- [ ] `/operation/login`
 - [x] `/test`
 
 接口声明样例：
@@ -118,9 +118,7 @@ URL: `/gethouselist`
 </td></tr>
 </table>
 
-
-
-**request example**:
+**Request example**:
 
 ```json
 {
@@ -133,7 +131,7 @@ URL: `/gethouselist`
 }
 ```
 
-**response example**:
+**Response example**:
 
 ```json
 [{
@@ -159,12 +157,61 @@ URL: `/gethouselist`
 
 ---
 
-## login.html
+URL: `/data/user-info`
 
-**input**:
+**Request**:
 
-username, password
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>无参数</td><td>-</td></tr>
+</table>
 
-**return**:
+**Response**:
 
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>nickname</td><td>用户名</td></tr>
+<tr><td>name</td><td>姓名</td></tr>
+<tr><td>id_type</td><td>证件类型</td></tr>
+<tr><td>id_number</td><td>证件号码</td></tr>
+<tr><td>phone</td><td>11位手机号码</td></tr>
+<tr><td>grade</td><td>用户等级</td></tr>
+<tr><td>register_city</td><td>注册城市</td></tr>
+<tr><td>register_time</td><td>注册时间 (YYYY/MM/DD)</td></tr>
+</table>
 
+**Response Example**:
+
+```json
+{
+    "nickname": "六小龄童",
+    "name": "章金莱",
+    "id_type": "身份证号",
+    "id_number": "233233233323232333",
+    "phone": "12345678910",
+    "grade": "普通用户",
+    "register_city": "浙江绍兴",
+    "register_time": "1959/4/12"
+}
+```
+
+---
+
+URL: `/operation/login`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>username</td><td>username</td></tr>
+<tr><td>password</td><td>password</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>success</td><td>true / false</td></tr>
+</table>
+
+---
