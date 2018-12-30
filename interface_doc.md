@@ -90,7 +90,18 @@ URL: `/gethouselist`
 - 4：30以上
 
 </td></tr>
-<tr><td>there_formaldehyde</td><td>
+<tr><td>house_type</td><td>
+
+房屋类型 (0 - 4)
+
+- 0: 不限
+- 1：一居
+- 2：二居
+- 3：三居
+- 4：其他
+
+</td></tr>
+<tr><td>formaldehyde</td><td>
 
 是否有甲醛 (0 - 2)
 
@@ -116,7 +127,8 @@ URL: `/gethouselist`
 - tag：标签，以下划线_隔开
 - area：房屋面积
 - price：房屋价格
-- there_formaldehyde：是否有甲醛
+- house_type: 房屋类型
+- formaldehyde：是否有甲醛
 
 </td></tr>
 </table>
@@ -130,6 +142,7 @@ URL: `/gethouselist`
     "district":2,
     "range_of_prices":0,
     "range_of_area":4,
+    "house_type":2,
     "formaldehyde":1
 }
 ```
@@ -145,6 +158,7 @@ URL: `/gethouselist`
     "tag": ["独卫","集体供暖","独立阳台"],
     "area": 200,
     "price": 30000,
+    "house_type":2,
     "formaldehyde": 0
 }, {
     "id": 2,
@@ -154,6 +168,7 @@ URL: `/gethouselist`
     "tag": ["独卫","集体供暖","独立阳台"],
     "area": 10,
     "price": 1000,
+    "house_type":2,
     "formaldehyde": 0
 }]
 ```
