@@ -27,6 +27,6 @@
 
 .function-entry {
     margin: 0 auto;
-    margin-top: 20vw;
-    width: 100px;
+    margin-top: 30vw;
+    width: 400px !important;
 }
