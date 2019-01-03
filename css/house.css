@@ -4,6 +4,55 @@
     position: relative;
 }
 .houseimg{
-    width: 400px;
-    height: 300px;
+    width: 732px;
+    height: 575px;
+}
+.left_colunm{
+    float: left;
+    width: 805px;
+    position: relative;
+    z-index: 1;
+}
+.right_colunm{
+    float: right;
+    width: 385px;
+}
+.price{
+    font-size: 30px;
+    color: #ffa000;
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 5px;
+    height: 120px;
+}
+.tag{
+    border-radius: 2px;
+    color: #999;
+    border: solid 1px #999;
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 28px;
+    display: inline-block;
+    margin: 0 10px 0 0;
+    float: left;
+}
+.detail{
+    padding: 0 25px;
+    /* background: #f5f5f5; */
+    border-radius: 5px;
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 20px;
+    height: 160px;
+    /* position: relative; */
+    z-index: 6;
+}
+.detail li{
+    line-height: 31px;
+    position: relative;
+    border-bottom: solid 1px #fff;
+    font-size: 14px;
+}
+.house_element{
+    
 }
