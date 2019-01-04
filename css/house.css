@@ -57,5 +57,16 @@ ol,ul{
     font-size: 14px;
 }
 .house_element{
+    border-radius: 2px;
+    font-size: 40px;
+    padding: 0 10px;
+    line-height: 50px;
+    display: inline-block;
+    margin: 0 10px 0 0;
+    float: left;
+    margin-top: 100px;
     
+}
+.house_element .item_tag{
+    font-size: 20px;
 }
