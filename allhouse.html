@@ -52,8 +52,8 @@
                             <p></p>
                         </div>
                         <div class="extra">
-                            <div class="ui label">IMAX</div>
-                            <div class="ui label"><i class="globe icon"></i> 附加的语言</div>
+                            <div v-for="tag in item.tag" class="ui label">{{ tag }}</div>
+                            
                             <div class="ui right floated house_right">
                                 <div class="ui six wide column price">${{item.price}}</div>
                                 <div class="ui default button">
@@ -67,6 +67,7 @@
                     </div>
                 </div>
             </div>
+            <!-- 房屋展示部分j结束 -->
             <!-- 页码条 -->
             <div class="page_num_box">
                 <a href="#" v-for="(item, index) in $data.page_num" class="page_num_item" @click="pageSwitch(index)"

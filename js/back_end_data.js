@@ -1,21 +1,27 @@
 back_end_data = {
     "/house": [{
+            "id" : 1,
             "name": "ziru",
             "img": "https://sine-img-bed.oss-cn-beijing.aliyuncs.com/autoup/CSR_shift.png",
             "price": 887,
-            "annote": "自如最好房",
+            "description": "自如最好房",
+            "tag": ["独卫", "集体供暖", "独立阳台"],
         },
         {
+            "id" : 2,
             "name": "ziaru",
             "img": "https://sine-img-bed.oss-cn-beijing.aliyuncs.com/autoup/CSR_shift.png",
             "price": 2887,
-            "annote": "自如第二好房",
+            "description": "自如第二好房",
+            "tag": ["独卫", "集体供暖", "独立阳台"],
         },
         {
+            "id" : 3,
             "name": "ziwru",
             "img": "https://sine-img-bed.oss-cn-beijing.aliyuncs.com/autoup/CSR_shift.png",
             "price": 1887,
-            "annote": "自如第三好房",
+            "description": "自如第三好房",
+            "tag": ["独卫", "集体供暖", "独立阳台"],
         },
     ],
 

@@ -7,6 +7,9 @@
     width: 732px;
     height: 575px;
 }
+ol,ul{
+    list-style: none outside none;
+}
 .left_colunm{
     float: left;
     width: 805px;
