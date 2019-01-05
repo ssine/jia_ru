@@ -12,6 +12,7 @@ const routers = [
             title: '我要求租'
         },
         component: (resolve) => require(['./views/allhouse.vue'], resolve)
+        //component: (resolve) => require(['./components/GoodsList.vue'], resolve)
     },
     {
         path: '/house',
