@@ -13,7 +13,7 @@
                 <Icon type="md-briefcase"/>
                 我要求租
             </MenuItem>
-            <MenuItem name="2">
+            <MenuItem id="center" name="3">
                 <Icon type="ios-people"/>
                 个人中心
             </MenuItem>
@@ -40,6 +40,9 @@
     img {
         width: 40px;
         margin-top: 10px;
+    }
+    #center {
+        float: right;
     }
 
 </style>
