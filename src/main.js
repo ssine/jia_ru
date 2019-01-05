@@ -5,11 +5,16 @@ import Routers from './router';
 import Util from './libs/util';
 import App from './app.vue';
 import Vuex from 'vuex';
+import axios from 'axios';
+import Qs from 'qs';
+
 import 'iview/dist/styles/iview.css';
 
 Vue.use(VueRouter);
 Vue.use(iView);
 Vue.use(Vuex);
+Vue.prototype.axios = axios;
+Vue.prototype.qs = Qs;
 
 // 路由配置
 const RouterConfig = {

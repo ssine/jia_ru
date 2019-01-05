@@ -122,6 +122,24 @@
     },
     created () {
       this.loadGoodsList();
+
+      this.axios.post('/api/test',this.qs.stringify({'name':'xiaoming','sex':'nan'}),{
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
+              .then(function(res){
+                console.log(res.data)
+                //控制台打印请求成功时返回的数据
+                //bind(this)可以不用
+              }.bind(this))
+              .catch(function(err){
+                if(err.response) {
+                  console.log(err.response)
+                  //控制台打印错误返回的内容
+                }
+                //bind(this)可以不用
+              }.bind(this));
     },
     mounted () {
       this.sreachItem = this.$route.query.sreachData;
