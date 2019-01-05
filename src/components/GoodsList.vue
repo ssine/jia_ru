@@ -33,10 +33,10 @@
               </span>
             </div>
             <div class="item-as-intro">
-              <span>{{item.intro}}</span>
+              <span>{{item.description}}</span>
             </div>
             <div class="item-as-selled">
-              已有<span>{{item.num}}</span>人评价
+              已有<span>{{item.house_type}}</span>人评价
             </div>
           </div>
         </div>
@@ -51,21 +51,28 @@
               <div class="goods-show-img">
                 <router-link to="/goodsDetail"><img :src="item.img"/></router-link>
               </div>
+              <div class="goods-show-detail">
+                <span>{{item.description}}</span>
+              </div>
               <div class="goods-show-price">
                 <span>
                   <Icon type="social-yen text-danger"></Icon>
                   <span class="seckill-price text-danger">{{item.price}}</span>
                 </span>
               </div>
-              <div class="goods-show-detail">
-                <span>{{item.intro}}</span>
+              <div class="goods-show-price">
+                <span>
+                  <Icon type="social-yen text-danger"></Icon>
+                  <span class="seckill-price text-danger">{{item.house_type}}</span>
+                </span>
               </div>
-              <div class="goods-show-num">
-                已有<span>{{item.remarks}}</span>人评价
-              </div>
-              <div class="goods-show-seller">
-                <span>{{item.shopName}}</span>
-              </div>
+
+              <!--<div class="goods-show-num">-->
+                <!--已有<span>{{item.remarks}}</span>人评价-->
+              <!--</div>-->
+              <!--<div class="goods-show-seller">-->
+                <!--<span>{{item.shopName}}</span>-->
+              <!--</div>-->
             </div>
           </div>
         </div>
@@ -101,7 +108,8 @@
           {title: '综合', en: 'sale'},
           {title: '评论数', en: 'remarks'},
           {title: '价格', en: 'price'}
-        ]
+        ],
+        orderGoodsList: [],
       };
     },
     computed: {
@@ -123,23 +131,12 @@
     created () {
       this.loadGoodsList();
 
-      this.axios.post('/api/test',this.qs.stringify({'name':'xiaoming','sex':'nan'}),{
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
+      this.axios.get('https://www.easy-mock.com/mock/5c2f26227106f779e7eaca4d/jr/gethouselist').then((response) => {
+        console.log(response.data);
+        this.orderGoodsList = response.data.house_list;
+        console.log(this.orderGoodsList);
+
       })
-              .then(function(res){
-                console.log(res.data)
-                //控制台打印请求成功时返回的数据
-                //bind(this)可以不用
-              }.bind(this))
-              .catch(function(err){
-                if(err.response) {
-                  console.log(err.response)
-                  //控制台打印错误返回的内容
-                }
-                //bind(this)可以不用
-              }.bind(this));
     },
     mounted () {
       this.sreachItem = this.$route.query.sreachData;
@@ -259,7 +256,7 @@
   .goods-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
   }
   .goods-show-info{
     width: 240px;

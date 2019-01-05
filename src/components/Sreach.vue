@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       sreachData: '',
-      promotionTags: ['买2免1', '领200神券', '199减100', '母婴5折抢', '充100送20']
+      promotionTags: ['地铁近', '楼层低', '环境优美', '安全', '比北邮好']
     };
   },
   methods: {
