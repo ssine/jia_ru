@@ -2,7 +2,7 @@
     <div>
 
         <Menu mode="horizontal" :theme="theme1" active-name="1">
-            <MenuItem name="4">
+            <MenuItem name="0">
                 <img :src="avatar"/>
             </MenuItem>
             <MenuItem name="1">

@@ -49,7 +49,7 @@
           <div class="goods-list">
             <div class="goods-show-info" v-for="(item, index) in orderGoodsList" :key="index">
               <div class="goods-show-img">
-                <router-link to="/goodsDetail"><img :src="item.img"/></router-link>
+                <router-link to="/house"><img :src="item.img"/></router-link>
               </div>
               <div class="goods-show-price">
                 <span>

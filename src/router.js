@@ -14,6 +14,13 @@ const routers = [
         component: (resolve) => require(['./views/allhouse.vue'], resolve)
     },
     {
+        path: '/house',
+        meta: {
+            title: '房屋'
+        },
+        component: (resolve) => require(['./views/house.vue'], resolve)
+    },
+    {
         path: '/login',
         name: 'login',
         meta: {
