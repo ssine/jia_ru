@@ -19,7 +19,10 @@
     </FormItem>
   </Form>
 </template>
+
 <script>
+import Qs from 'qs';
+
 export default {
   name: 'LoginForm',
   props: {
@@ -60,7 +63,10 @@ export default {
     handleSubmit () {
       this.$refs['loginForm'].validate((valid) => {
         if (valid) {
-          this.axios.post('https://www.easy-mock.com/mock/5c2f26227106f779e7eaca4d/jr/operation/login').then((response) => {
+          this.axios.post(
+            'http://39.105.181.135/operation/login/',
+            Qs.stringify(this.$data.form)
+          ).then((response) => {
             console.log(response.data);
             switch (response.data.state) {
               case 100:

@@ -17,8 +17,9 @@
 - [ ] `/query/user-exist`
 - [ ] `/operation/login`
 - [ ] `/operation/register`
-- [ ] `/modify/user-info`
-- [ ] `/data/house-info
+- [ ] `/modify/password`
+- [ ] `/modify/phone`
+- [ ] `/data/house-info`
 - [x] `/test`
 
 接口声明样例：
@@ -400,23 +401,33 @@ URL: `/operation/register`
 
 ---
 
-URL: `/modify/user-info`
+URL: `/modify/password`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>password</td><td>新密码（明文）</td></tr>
+</table>
+
+**Response**:
+
+state
+
+---
+
+URL: `/modify/phone`
 
 **Request**:
 
 <table>
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>phone</td><td>新手机号码</td></tr>
-<tr><td>password</td><td>新密码（明文）</td></tr>
 </table>
 
 **Response**:
 
-<table>
-<tr><th>key name</th><th>value description</th></tr>
-<tr><td>success</td><td>true / false</td></tr>
-<tr><td>error_msg</td><td>修改失败时，返回失败原因</td></tr>
-</table>
+state
 
 ---
 

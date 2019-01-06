@@ -65,6 +65,8 @@
 
 
 <script>
+import Qs from 'qs';
+
 export default {
   name: 'RegisterForm',
   props: {
@@ -136,7 +138,7 @@ export default {
   data () {
     return {
       regForm: {
-        userName: '',
+        username: '',
         password: ''
       }
     }
@@ -159,7 +161,11 @@ export default {
       this.$refs['regForm'].validate((valid) => {
         if (valid) {
           this.$Message.success('提交成功!');
-          this.axios.post('https://www.easy-mock.com/mock/5c2f26227106f779e7eaca4d/jr/operation/register').then((response) => {
+          console.log(Qs.stringify(this.$data.regForm));
+          this.axios.post(
+            'http://39.105.181.135/operation/register/',
+            Qs.stringify(this.$data.regForm)
+          ).then((response) => {
             console.log(response.data);
             switch (response.data.state) {
               case 100:
