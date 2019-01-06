@@ -10,60 +10,65 @@
                     <Step title="确认" icon="ios-mail"></Step>
                 </Steps>
             </div>
-            <div v-show="page_num === 0" class="form">
-                <div class="form_line">
-                    <span class="form_item">房屋地址</span>
+
+            <Form :label-position="left" :label-width="200" v-show="page_num === 0" class="form">
+                <FormItem label="房屋地区" class="form_line">
+                    <al-cascader v-model="res_c"/>
+                </FormItem>
+
+                <FormItem label="房屋地址" class="form_line">
+
                     <Input v-model="com_name" placeholder="新华" clearable style="width: 200px"/>
                     小区
                     <Input v-model="com_unit" placeholder="8" clearable style="width: 200px"/>
                     单元
                     <Input v-model="com_floor" placeholder="2" clearable style="width: 200px"/>
                     层
-                </div>
-                <div class="form_line">
-                    <span class="form_item">房屋类型</span>
+                </FormItem>
+                <FormItem label="房屋类型" class="form_line">
+
                     <RadioGroup v-model="house_type">
                         <Radio label="一居"></Radio>
                         <Radio label="二居"></Radio>
                         <Radio label="三居"></Radio>
                         <Radio label="其他"></Radio>
                     </RadioGroup>
-                </div>
-                <div class="form_line">
-                    <span class="form_item">房屋面积</span>
+                </FormItem>
+                <FormItem label="房屋面积" class="form_line">
+
                     <Input v-model="area" placeholder="30" style="width: 300px"/>
                     平米
-                </div>
-                <div class="form_line">
-                    <span class="form_item">电梯</span>
+                </FormItem>
+                <FormItem label="电梯" class="form_line">
+
                     <Switch v-model="elevator"></Switch>
-                </div>
-                <div class="form_line">
-                    <span class="form_item">房屋描述</span>
+                </FormItem>
+                <FormItem label="房屋描述" class="form_line">
+
                     <Input v-model="description" type="textarea" :autosize="{minRows: 2,maxRows: 5}"
                            placeholder="这是个好房子"/>
-                </div>
-                <div class="form_line">
-                    <span class="form_item">押金</span>
-                    <Slider v-model="deposit" :max="10000" :step="200" show-input></Slider>
+                </FormItem>
+                <FormItem label="押金" class="form_line">
+                    <InputNumber :step="100" :min="300" v-model="deposit"></InputNumber>
 
-                </div>
-                <div class="form_line">
-                    <span class="form_item">支付方式</span>
+
+                </FormItem>
+                <FormItem label="支付方式" class="form_line">
+
                     <RadioGroup v-model="pay_method">
                         <Radio label="月付"></Radio>
                         <Radio label="季付"></Radio>
                         <Radio label="年付"></Radio>
                     </RadioGroup>
-                </div>
+                </FormItem>
 
-                <div class="form_line">
-                    <span class="form_item">租金</span>
-                    <Slider v-model="cost" :max="10000" :step="200" show-input></Slider>
-                </div>
+                <FormItem label="租金" class="form_line">
+                    <InputNumber :step="100" :min="300" v-model="cost"></InputNumber>
+
+                </FormItem>
 
 
-            </div>
+            </Form>
             <div v-show="page_num === 1" class="upload_img">
                 <Upload
                         multiple
@@ -130,6 +135,7 @@
         data() {
             return {
                 page_num: 0,
+                res_c: [],
                 com_name: "",
                 com_unit: "",
                 com_floor: "",
@@ -137,9 +143,9 @@
                 area: "",
                 elevator: true,
                 description: "",
-                deposit: "",
+                deposit: 300,
                 pay_method: "月付",
-                cost: "",
+                cost: 300,
 
 
             }
@@ -160,9 +166,9 @@
         margin: auto;
     }
 
-    .form_line {
-        line-height: 40px;
-    }
+    /*.form_line {*/
+    /*line-height: 40px;*/
+    /*}*/
 
     .upload_img {
         height: 400px;

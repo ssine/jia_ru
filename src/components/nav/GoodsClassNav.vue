@@ -9,22 +9,11 @@
     <div class="item-class-show">
         <div class="item-class-group">
             <span class="tag-name">价格范围:</span>
-            <RadioGroup v-model="d_price" type="button">
-                <Radio label="不限"></Radio>
-                <Radio label="2000以下"></Radio>
-                <Radio label="2000-4000"></Radio>
-                <Radio label="4000以上"></Radio>
-            </RadioGroup>
+            <Slider v-model="d_price" :step="500" :max="10000" show-stops range></Slider>
         </div>
         <div class="item-class-group">
             <span class="tag-name">面积范围:</span>
-            <RadioGroup v-model="d_area" type="button">
-                <Radio label="不限"></Radio>
-                <Radio label="10平米以下"></Radio>
-                <Radio label="10-20平米"></Radio>
-                <Radio label="20-30平米"></Radio>
-                <Radio label="30平米以上"></Radio>
-            </RadioGroup>
+            <Slider v-model="d_area" :step="10" :max="200" show-stops range></Slider>
         </div>
         <div class="item-class-group">
             <span class="tag-name">房屋类型:</span>
@@ -48,8 +37,8 @@
       //  components: {Radio},
         data() {
             return {
-                d_price: "不限",
-                d_area: "不限",
+                d_price: [1000, 5000],
+                d_area: [10, 50],
                 d_type: "不限",
             };
         },
