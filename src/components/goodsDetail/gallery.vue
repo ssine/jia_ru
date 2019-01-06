@@ -1,24 +1,14 @@
 <template>
     <div>
-
         <div class="gallery">
-            <!-- swiper1 -->
             <swiper :options="swiperOptionTop" class="gallery-top" ref="swiperTop">
-                <swiper-slide class="slide-1"></swiper-slide>
-                <swiper-slide class="slide-2"></swiper-slide>
-                <swiper-slide class="slide-3"></swiper-slide>
-                <swiper-slide class="slide-4"></swiper-slide>
-                <swiper-slide class="slide-5"></swiper-slide>
-                <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
-                <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
+                <swiper-slide v-for="item in imgs" v-bind:style="{backgroundImage:'url(' + item + ')'}"></swiper-slide>
+
             </swiper>
-            <!-- swiper2 Thumbs -->
+            <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
+            <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
             <swiper :options="swiperOptionThumbs" class="gallery-thumbs" ref="swiperThumbs">
-                <swiper-slide class="slide-1"></swiper-slide>
-                <swiper-slide class="slide-2"></swiper-slide>
-                <swiper-slide class="slide-3"></swiper-slide>
-                <swiper-slide class="slide-4"></swiper-slide>
-                <swiper-slide class="slide-5"></swiper-slide>
+                <swiper-slide v-for="item in imgs" v-bind:style="{backgroundImage:'url(' + item + ')'}"></swiper-slide>
             </swiper>
         </div>
     </div>
@@ -26,6 +16,7 @@
 
 <script>
     export default {
+        props: ['imgs'],
         data() {
             return {
                 swiperOptionTop: {
@@ -44,10 +35,13 @@
                     loop: true,
                     loopedSlides: 5, //looped slides should be the same
                     slideToClickedSlide: true,
-                }
+                },
+
             }
         },
         mounted() {
+            console.log(this.$parent.imgs);
+
             this.$nextTick(() => {
                 const swiperTop = this.$refs.swiperTop.swiper
                 const swiperThumbs = this.$refs.swiperThumbs.swiper

@@ -2,7 +2,7 @@
     <div>
         <jiarunav></jiarunav>
         <!--<GoodsDetail></GoodsDetail>-->
-        <swiper></swiper>
+        <swiper :imgs="imgs"></swiper>
     </div>
 </template>
 
@@ -16,7 +16,16 @@
             GoodsDetail,
             swiper,
         },
-        name: "house"
+        name: "house",
+        data() {
+            return {
+                imgs: [
+                    "https://a0.muscache.com/im/pictures/951a100f-cfbd-48ea-8954-91da4c0cf24c.jpg?aki_policy=xx_large",
+                    "https://a0.muscache.com/im/pictures/951a100f-cfbd-48ea-8954-91da4c0cf24c.jpg?aki_policy=xx_large",
+                    "https://a0.muscache.com/im/pictures/951a100f-cfbd-48ea-8954-91da4c0cf24c.jpg?aki_policy=xx_large"
+                ]
+            }
+        }
     }
 </script>
 
