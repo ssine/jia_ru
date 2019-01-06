@@ -43,9 +43,9 @@
             console.log(this.$parent.imgs);
 
             this.$nextTick(() => {
-                const swiperTop = this.$refs.swiperTop.swiper
-                const swiperThumbs = this.$refs.swiperThumbs.swiper
-                swiperTop.controller.control = swiperThumbs
+                const swiperTop = this.$refs.swiperTop.swiper;
+                const swiperThumbs = this.$refs.swiperThumbs.swiper;
+                swiperTop.controller.control = swiperThumbs;
                 swiperThumbs.controller.control = swiperTop
             })
         }
