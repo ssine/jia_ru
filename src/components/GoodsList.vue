@@ -78,7 +78,7 @@
         </div>
       </div>
       <div class="goods-page">
-        <Page :total="100" show-sizer></Page>
+        <Page :total="40" show-elevator show-sizer @on-change="update_page_num"/>
       </div>
     </div>
     <Footer></Footer>
@@ -129,6 +129,9 @@
       },
       update_house_list(data){
         console.log(data);
+      },
+      update_page_num(pagenum) {
+        console.log(pagenum);
       }
     },
     created () {

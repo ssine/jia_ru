@@ -8,20 +8,28 @@ import Vuex from 'vuex';
 import axios from 'axios';
 import Qs from 'qs';
 import VueAxios from 'vue-axios'
-
 import 'iview/dist/styles/iview.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-
+import BaiduMap from 'vue-baidu-map'
 // require styles
 import 'swiper/dist/css/swiper.css'
+import VueJsonp from 'vue-jsonp'
 
+Vue.use(VueJsonp)
 Vue.use(VueRouter);
 Vue.use(iView);
 Vue.use(Vuex);
 Vue.use(VueAxios, axios);
 //Vue.prototype.axios = axios;
 //Vue.prototype.qs = Qs;
-Vue.use(VueAwesomeSwiper, /* { default global options } */);
+Vue.use(VueAwesomeSwiper);
+
+Vue.use(BaiduMap, {
+    /* Visit http://lbsyun.baidu.com/apiconsole/key for details about app key. */
+    ak: 'DA137DSpWRBxmO5LktIiHccpAGFi7kY4'
+})
+
+
 
 // 路由配置
 const RouterConfig = {

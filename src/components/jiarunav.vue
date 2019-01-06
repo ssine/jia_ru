@@ -3,19 +3,27 @@
 
         <Menu mode="horizontal" :theme="theme1" active-name="1">
             <MenuItem name="0">
-                <img :src="avatar"/>
+                <router-link to="index">
+                    <img :src="avatar"/>
+                </router-link>
             </MenuItem>
             <MenuItem name="1">
-                <Icon type="ios-home"/>
-                我要租房
+                <router-link to="allhouse">
+                    <Icon type="ios-home"/>
+                    我要租房
+                </router-link>
             </MenuItem>
             <MenuItem name="2">
-                <Icon type="md-briefcase"/>
-                我要求租
+                <router-link to="allrent">
+                    <Icon type="md-briefcase"/>
+                    我要求租
+                </router-link>
             </MenuItem>
             <MenuItem id="center" name="3">
-                <Icon type="ios-people"/>
-                个人中心
+                <router-link to="login">
+                    <Icon type="ios-people"/>
+                    个人中心
+                </router-link>
             </MenuItem>
 
         </Menu>

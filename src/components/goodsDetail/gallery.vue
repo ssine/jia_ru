@@ -2,14 +2,17 @@
     <div>
         <div class="gallery">
             <swiper :options="swiperOptionTop" class="gallery-top" ref="swiperTop">
-                <swiper-slide v-for="item in imgs" v-bind:style="{backgroundImage:'url(' + item + ')'}"></swiper-slide>
+                <swiper-slide v-for="(item, index) in imgs" v-bind:style="{backgroundImage:'url(' + item + ')'}"
+                              :key="index"></swiper-slide>
 
             </swiper>
             <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
             <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
             <swiper :options="swiperOptionThumbs" class="gallery-thumbs" ref="swiperThumbs">
-                <swiper-slide v-for="item in imgs" v-bind:style="{backgroundImage:'url(' + item + ')'}"></swiper-slide>
+                <swiper-slide v-for="(item, index) in imgs" v-bind:style="{backgroundImage:'url(' + item + ')'}"
+                              :key="index"></swiper-slide>
             </swiper>
+
         </div>
     </div>
 </template>
