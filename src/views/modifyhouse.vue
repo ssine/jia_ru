@@ -128,7 +128,7 @@
     import jiarunav from '@/components/jiarunav.vue';
 
     export default {
-        name: "addhouse",
+        name: "modifyhouse",
         components: {
             jiarunav,
         },

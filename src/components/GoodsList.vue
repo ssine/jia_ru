@@ -1,46 +1,15 @@
 <template>
   <div>
     <Sreach></Sreach>
-    <GoodsListNav></GoodsListNav>
+
     <div class="container">
-      <div class="bread-crumb">
-        <Breadcrumb>
-          <BreadcrumbItem to="/">
-            <Icon type="ios-home-outline"></Icon> 首页
-          </BreadcrumbItem>
-          <BreadcrumbItem to="/goodsList?sreachData=">
-            <Icon type="bag"></Icon> {{sreachItem}}
-          </BreadcrumbItem>
-        </Breadcrumb>
-      </div>
-      <!-- 商品标签导航 -->
+
+        <!-- 商品标签导航 -->
       <GoodsClassNav @update_house_list="update_house_list"></GoodsClassNav>
       <!-- 商品展示容器 -->
       <div class="goods-box">
-        <div class="as-box">
-          <div class="item-as-title">
-            <span>商品精选</span>
-            <span>广告</span>
-          </div>
-          <div class="item-as" v-for="(item,index) in asItems" :key="index">
-            <div class="item-as-img">
-              <img :src="item.img" alt="">
-            </div>
-            <div class="item-as-price">
-              <span>
-                <Icon type="social-yen text-danger"></Icon>
-                <span class="seckill-price text-danger">{{item.price}}</span>
-              </span>
-            </div>
-            <div class="item-as-intro">
-              <span>{{item.description}}</span>
-            </div>
-            <div class="item-as-selled">
-              已有<span>{{item.house_type}}</span>人评价
-            </div>
-          </div>
-        </div>
-        <div class="goods-list-box">
+
+          <div class="goods-list-box">
           <div class="goods-list-tool">
             <ul>
               <li v-for="(item,index) in goodsTool" :key="index" @click="orderBy(item.en, index)"><span :class="{ 'goods-list-tool-active': isAction[index]}">{{item.title}} <Icon :type="icon[index]"></Icon></span></li>
@@ -224,7 +193,7 @@
   .goods-list-box {
     margin-left: 15px;
     /*width: calc(100% - 215px);*/
-    width: 1200px;
+      /*width: 1600px;*/
   }
   .goods-list-tool{
     width: 100%;
