@@ -10,6 +10,10 @@ import Qs from 'qs';
 import VueAxios from 'vue-axios'
 
 import 'iview/dist/styles/iview.css';
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
 
 Vue.use(VueRouter);
 Vue.use(iView);
@@ -17,6 +21,7 @@ Vue.use(Vuex);
 Vue.use(VueAxios, axios);
 //Vue.prototype.axios = axios;
 //Vue.prototype.qs = Qs;
+Vue.use(VueAwesomeSwiper, /* { default global options } */);
 
 // 路由配置
 const RouterConfig = {

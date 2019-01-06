@@ -14,7 +14,7 @@
         </Breadcrumb>
       </div>
       <!-- 商品标签导航 -->
-      <GoodsClassNav></GoodsClassNav>
+      <GoodsClassNav @update_house_list="update_house_list"></GoodsClassNav>
       <!-- 商品展示容器 -->
       <div class="goods-box">
         <div class="as-box">
@@ -126,6 +126,9 @@
         this.isAction[index] = true;
         this.icon[index] = 'arrow-up-a';
         this.SET_GOODS_ORDER_BY(data);
+      },
+      update_house_list(data){
+        console.log(data);
       }
     },
     created () {

@@ -36,6 +36,7 @@
                 <Radio label="其他"></Radio>
             </RadioGroup>
         </div>
+        <Button type="primary" @click="update_select()">确定</Button>
     </div>
 </template>
 
@@ -51,6 +52,16 @@
                 d_area: "不限",
                 d_type: "不限",
             };
+        },
+        methods: {
+            update_select: function(){
+                let data = {
+                    d_price: this.d_price,
+                    d_area: this.d_area,
+                    d_type: this.d_type,
+                }
+                this.$emit('update_house_list',data);
+            }
         }
     };
 </script>
@@ -59,6 +70,7 @@
     .item-class-show {
         margin: 15px auto;
         width: 100%;
+        text-align: center;
     }
 
     .item-class-group {

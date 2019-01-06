@@ -26,7 +26,9 @@ module.exports = {
                                 css: ExtractTextPlugin.extract({
                                     use: ['css-loader', 'autoprefixer-loader', 'less-loader'],
                                     fallback: 'vue-style-loader'
-                                })
+                                }),
+                                scss: 'style-loader!css-loader!sass-loader',
+                                sass: 'style-loader!css-loader!sass-loader?indentedSyntax',
                             }
                         }
                     },
@@ -68,6 +70,16 @@ module.exports = {
             {
                 test: /\.(html|tpl)$/,
                 loader: 'html-loader'
+            },
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader" // compiles Sass to CSS
+                }]
             }
         ]
     },
