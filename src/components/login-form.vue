@@ -1,7 +1,7 @@
 <template>
   <Form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
     <FormItem prop="userName">
-      <Input v-model="form.userName" placeholder="请输入用户名">
+      <Input v-model="form.username" placeholder="请输入用户名">
         <span slot="prepend">
           <Icon :size="16" type="ios-person"></Icon>
         </span>
@@ -23,7 +23,7 @@
 export default {
   name: 'LoginForm',
   props: {
-    userNameRules: {
+    usernameRules: {
       type: Array,
       default: () => {
         return [
@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       form: {
-        userName: 'super_admin',
+        username: 'super_admin',
         password: ''
       }
     }
@@ -51,15 +51,34 @@ export default {
   computed: {
     rules () {
       return {
-        userName: this.userNameRules,
+        username: this.usernameRules,
         password: this.passwordRules
       }
     }
   },
   methods: {
     handleSubmit () {
-      if (this.form.userName != '' && this.form.password != '')
-        console.log(this.form.userName, this.form.password);
+      this.$refs['loginForm'].validate((valid) => {
+        if (valid) {
+          this.axios.post('https://www.easy-mock.com/mock/5c2f26227106f779e7eaca4d/jr/operation/login').then((response) => {
+            console.log(response.data);
+            switch (response.data.state) {
+              case 100:
+              case 110:
+                window.location.href = './index';
+                break;
+              case 210:
+                alert('登录失败，请重试。');
+                break;
+              case 211:
+                alert('登录失败，用户名或密码错误。');
+                break;
+            }
+          })
+        } else {
+          this.$Message.error('请输入用户名与密码!');
+        }
+      })
     }
   }
 }

@@ -29,6 +29,15 @@ const routers = [
           hideInMenu: true
         },
         component: (resolve) => require(['./views/login.vue'], resolve)
+    },
+    {
+        path: '/register',
+        name: 'register',
+        meta: {
+          title: '注册',
+          hideInMenu: true
+        },
+        component: (resolve) => require(['./views/register.vue'], resolve)
     }
 ];
 export default routers;
