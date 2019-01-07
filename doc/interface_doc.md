@@ -25,6 +25,7 @@
 - [ ] `/action/reject-notification`
 - [x] `/data/house-info`
 - [ ] `/data/rental-info`
+- [ ] `/data/deal-details/`
 - [x] `/test`
 
 接口声明样例：
@@ -540,6 +541,70 @@ URL: `/data/rental-info`
     "cost": 2500,
     "register_time": "1959/4/12",
     "modify_time": "1959/6/12"
-    
+}
+```
+
+---
+
+URL: `/data/deal-details/`
+
+查询某个时间段后某个位置的交易记录明细
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>start_date</td><td>查询日期左区间 (mm/dd/yyyy)</td></tr>
+<tr><td>end_date</td><td>查询日期右区间 (mm/dd/yyyy)</td></tr>
+<tr><td>location</td><td>地址要求 (房屋地址包含该字符串即符合要求)</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>data</td><td>
+
+交易记录的列表。 交易记录包含的属性：
+
+- owner 房东用户名
+- user 租客用户名
+- date 成交日期 (mm/dd/yyyy)
+- rental 每月租金
+- commission 中介费
+
+</td></tr>
+</table>
+
+**Request Example**:
+
+```json
+{
+    "start_date": "1/1/1970",
+    "end_date": "1/7/2019",
+    "location": "北京市"
+}
+```
+
+**Response Example**:
+
+```json
+{
+    "data": [
+        {
+            "owner": "关云长",
+            "user": "张翼德",
+            "date": "8/9/1964",
+            "rental": "9999",
+            "commission": "100"
+        },
+        {
+            "owner": "关云长",
+            "user": "张翼德",
+            "date": "9/8/1964",
+            "rental": "6666",
+            "commission": "999"
+        }
+    ]
 }
 ```
