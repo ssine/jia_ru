@@ -372,6 +372,96 @@ state
 
 ---
 
+URL: `/query/apply-notification`
+
+所有申请租用当前用户房源的请求
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>none</td><td>-</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>data</td><td>
+
+一个请求的json数组，每一个请求包含
+
+- id: 请求的唯一编号
+- username: 发出请求的用户名
+- location: 请求的房屋位置
+
+</td></tr>
+</table>
+
+---
+
+URL: `/query/provide-notification`
+
+所有向当前用户发布的需求提供房屋的请求
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>none</td><td>-</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>data</td><td>
+
+一个请求的json数组，每一个请求包含
+
+- id: 请求的唯一编号
+- username: 发出请求的用户名
+- location: 提供的房屋位置
+
+</td></tr>
+</table>
+
+---
+
+URL: `/action/accept-notification`
+
+当前用户接受某个请求
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>id</td><td>请求id</td></tr>
+</table>
+
+**Response**:
+
+state
+
+---
+
+URL: `/action/reject-notification`
+
+当前用户拒绝某个请求
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>id</td><td>请求id</td></tr>
+</table>
+
+**Response**:
+
+state
+
+---
+
 URL: `/data/house-info`
 
 **Request**:
