@@ -19,6 +19,10 @@
 - [ ] `/operation/register`
 - [ ] `/modify/password`
 - [ ] `/modify/phone`
+- [ ] `/query/apply-notification`
+- [ ] `/query/provide-notification`
+- [ ] `/action/accept-notification`
+- [ ] `/action/reject-notification`
 - [ ] `/data/house-info`
 - [ ] `/data/rental-info`
 - [x] `/test`
