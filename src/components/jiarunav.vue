@@ -27,6 +27,10 @@
             </MenuItem>
 
         </Menu>
+        <div>
+            <vue-speech v-show="false" lang="zh-CN" @onTranscriptionEnd="onEnd"/>
+        </div>
+
     </div>
 </template>
 <script>
@@ -37,6 +41,15 @@
             return {
                 theme1: 'light',
                 avatar: avatar,
+            }
+        },
+        methods: {
+            onEnd({lastSentence, transcription}) {
+                // `lastSentence` is the last sentence before the pause
+                // `transcription` is the full array of sentences
+                console.log("voice");
+                console.log(lastSentence);
+                console.log(transcription);
             }
         }
     }

@@ -1,9 +1,9 @@
 <template>
     <div>
         <jiarunav></jiarunav>
-        <div>
-            <vue-speech lang="zh-CN" @onTranscriptionEnd="onEnd"/>
-        </div>
+        <!--<div>-->
+        <!--<vue-speech lang="zh-CN" @onTranscriptionEnd="onEnd"/>-->
+        <!--</div>-->
         <GoodsList></GoodsList>
 
 
@@ -20,15 +20,7 @@
             GoodsList,
         },
         name: "allhouse",
-        methods: {
-            onEnd({lastSentence, transcription}) {
-                // `lastSentence` is the last sentence before the pause
-                // `transcription` is the full array of sentences
-                console.log("voice");
-                console.log(lastSentence);
-                console.log(transcription);
-            }
-        }
+        methods: {}
     }
 </script>
 
