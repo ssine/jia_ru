@@ -26,6 +26,7 @@
 - [x] `/data/house-info`
 - [ ] `/data/rental-info`
 - [ ] `/data/deal-details/`
+- [ ] `/data/city-statistics/`
 - [x] `/test`
 
 接口声明样例：
@@ -597,16 +598,63 @@ URL: `/data/deal-details/`
             "user": "张翼德",
             "location": "北京市海淀区金典小区",
             "date": "8/9/1964",
-            "rental": "9999",
-            "commission": "100"
+            "rental": 9999,
+            "commission": 100
         },
         {
             "owner": "关云长",
             "user": "张翼德",
             "location": "北京市海淀区金典小区",
             "date": "9/8/1964",
-            "rental": "6666",
-            "commission": "999"
+            "rental": 6666,
+            "commission": 999
+        }
+    ]
+}
+```
+
+---
+
+URL: `/data/city-statistics/`
+
+查询所有城市的统计信息
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>none</td><td>-</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>data</td><td>
+
+城市统计信息的列表，每个城市一项。 每项包含的属性：
+
+- city_name 城市名
+- total_count 累计成交笔数
+- total_commission 租客用户名
+
+</td></tr>
+</table>
+
+**Response Example**:
+
+```json
+{
+    "data": [
+        {
+            "city_name": "北京",
+            "total_count": 3,
+            "total_commission": 100
+        },
+        {
+            "city_name": "青岛",
+            "total_count": 3,
+            "total_commission": 100
         }
     ]
 }
