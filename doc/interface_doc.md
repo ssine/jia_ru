@@ -272,6 +272,7 @@ URL: `/data/user-asked`
 - location: 房屋地理位置
 - description: 房屋描述
 - rental: 租金
+- state: 求租信息状态(已成交/未成交)
 
 </td></tr>
 </table>
