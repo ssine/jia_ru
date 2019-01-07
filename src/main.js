@@ -27,8 +27,7 @@ Vue.use(VueRouter);
 Vue.use(iView);
 Vue.use(Vuex);
 Vue.use(VueAxios, axios);
-//Vue.prototype.axios = axios;
-//Vue.prototype.qs = Qs;
+Vue.prototype.Qs = Qs;
 Vue.use(VueAwesomeSwiper);
 Vue.use(iviewArea);
 
