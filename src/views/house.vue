@@ -190,7 +190,7 @@
         font-size: 32px;
         font-weight: 800;
         line-height: 1.125em !important;
-        color: rgb(72, 72, 72) !important;
+        color: rgb(72, 72, 72);
         padding-top: 6px !important;
         padding-bottom: 6px !important;
         margin-top: 20px;
@@ -198,7 +198,7 @@
     }
 
     .house_price {
-
+        color: #F5BD19;
     }
 
     .base_info {

@@ -11,9 +11,9 @@
                 </Steps>
             </div>
 
-            <Form v-show="page_num === 0" :label-position="left" :label-width="200" class="form">
+            <Form v-show="page_num === 0" :label-position="left" :label-width="100" class="form">
                 <FormItem label="房屋地区" class="form_line">
-                    <al-cascader v-model="res_c"/>
+                    <al-cascader v-model="c_district"/>
                 </FormItem>
 
                 <FormItem label="房屋地址" class="form_line">
@@ -81,42 +81,44 @@
                 </Upload>
             </div>
             <div v-show="page_num === 2" class="confrim">
-                <div class="form_line">
-                    <span class="form_item">房屋地址</span>
-                    <span class="form_value">{{com_name}}{{com_unit}}{{com_floor}}</span>
-                </div>
-                <div class="form_line">
-                    <span class="form_item">房屋类型</span>
-                    <span class="form_value">{{house_type}}</span>
-                </div>
-                <div class="form_line">
-                    <span class="form_item">房屋面积</span>
-                    <span class="form_value">{{area}}</span>
-                </div>
-                <div class="form_line">
-                    <span class="form_item">电梯</span>
-                    <span class="form_value">{{elevator}}</span>
+                <Form :label-position="left" :label-width="100" class="form">
+                    <FormItem label="房屋地区" class="form_line">
+                        {{district_str}}
+                    </FormItem>
 
-                </div>
-                <div class="form_line">
-                    <span class="form_item">房屋描述</span>
-                    <span class="form_value">{{description}}</span>
-                </div>
-                <div class="form_line">
-                    <span class="form_item">押金</span>
-                    <span class="form_value">{{deposit}}</span>
+                    <FormItem label="房屋地址" class="form_line">
+                        {{com_name}}{{com_unit}}{{com_floor}}
+                    </FormItem>
+                    <FormItem label="房屋类型" class="form_line">
+                        {{house_type}}
+                    </FormItem>
+                    <FormItem label="房屋面积" class="form_line">
+                        {{area}}
+                        平米
+                    </FormItem>
+                    <FormItem label="电梯" class="form_line">
+                        <span v-show="elevator === true">有</span>
+                        <span v-show="elevator === false">无</span>
+                    </FormItem>
+                    <FormItem label="房屋描述" class="form_line">
+
+                        <p>{{description}}</p>
+                    </FormItem>
+                    <FormItem label="押金" class="form_line">
+                        {{deposit}}
 
 
-                </div>
-                <div class="form_line">
-                    <span class="form_item">支付方式</span>
-                    <span class="form_value">{{pay_method}}</span>
-                </div>
+                    </FormItem>
+                    <FormItem label="支付方式" class="form_line">
+                        {{pay_method}}
+                    </FormItem>
 
-                <div class="form_line">
-                    <span class="form_item">组件</span>
-                    <span class="form_value">{{cost}}</span>
-                </div>
+                    <FormItem label="租金" class="form_line">
+                        {{cost}}
+                    </FormItem>
+
+
+                </Form>
 
             </div>
             <Button type="primary" @click="add_page()">下一步</Button>
@@ -135,7 +137,7 @@
         data() {
             return {
                 page_num: 0,
-                res_c: [],
+                c_district: [],
                 com_name: "",
                 com_unit: "",
                 com_floor: "",
@@ -150,7 +152,8 @@
                     area: [
                         {required: true, message: 'The name cannot be empty', trigger: 'change'}
                     ]
-                }
+                },
+                district_str: '',
 
 
             }
@@ -158,7 +161,23 @@
         methods: {
             add_page: function () {
                 this.page_num += 1;
+                console.log(this.c_district);
+                this.district_str = this.c_district2str();
+            },
+            c_district2str: function () {
+                console.log(this.c_district);
+                this.district_str = '';
+
+                for (var i = 0; i < this.c_district.length; i++) {
+                    // this.district_str += c_district[i]
+                    this.district_str += this.c_district[i].name;
+                }
+                return this.district_str;
             }
+        },
+        computed: {
+
+
         }
 
     }
@@ -177,5 +196,10 @@
 
     .upload_img {
         height: 400px;
+    }
+
+    .form {
+        width: 800px;
+
     }
 </style>
