@@ -569,6 +569,7 @@ URL: `/data/deal-details/`
 
 - owner 房东用户名
 - user 租客用户名
+- location 房屋位置
 - date 成交日期 (mm/dd/yyyy)
 - rental 每月租金
 - commission 中介费
@@ -594,6 +595,7 @@ URL: `/data/deal-details/`
         {
             "owner": "关云长",
             "user": "张翼德",
+            "location": "北京市海淀区金典小区",
             "date": "8/9/1964",
             "rental": "9999",
             "commission": "100"
@@ -601,6 +603,7 @@ URL: `/data/deal-details/`
         {
             "owner": "关云长",
             "user": "张翼德",
+            "location": "北京市海淀区金典小区",
             "date": "9/8/1964",
             "rental": "6666",
             "commission": "999"
