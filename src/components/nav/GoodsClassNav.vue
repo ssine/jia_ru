@@ -6,28 +6,17 @@
 * @Describe: 搜索商品导航标签
 */
 <template>
-    <div class="item-class-show">
-        <div class="item-class-group">
-            <span class="tag-name">价格范围:</span>
-            <RadioGroup v-model="d_price" type="button">
-                <Radio label="不限"></Radio>
-                <Radio label="2000以下"></Radio>
-                <Radio label="2000-4000"></Radio>
-                <Radio label="4000以上"></Radio>
-            </RadioGroup>
-        </div>
-        <div class="item-class-group">
-            <span class="tag-name">面积范围:</span>
-            <RadioGroup v-model="d_area" type="button">
-                <Radio label="不限"></Radio>
-                <Radio label="10平米以下"></Radio>
-                <Radio label="10-20平米"></Radio>
-                <Radio label="20-30平米"></Radio>
-                <Radio label="30平米以上"></Radio>
-            </RadioGroup>
-        </div>
-        <div class="item-class-group">
-            <span class="tag-name">房屋类型:</span>
+
+    <Form :label-position="left" :label-width="100" class="item-class-show">
+        <FormItem label="价格范围" class="item-class-group">
+            <Slider v-model="d_price" :step="500" :max="10000" show-stops range></Slider>
+        </FormItem>
+        <FormItem label="面积范围:" class="item-class-group">
+
+            <Slider v-model="d_area" :step="10" :max="200" show-stops range></Slider>
+        </FormItem>
+        <FormItem label="房屋类型:" class="item-class-group">
+
             <RadioGroup v-model="d_type" type="button">
                 <Radio label="不限"></Radio>
                 <Radio label="一居"></Radio>
@@ -35,9 +24,11 @@
                 <Radio label="三居"></Radio>
                 <Radio label="其他"></Radio>
             </RadioGroup>
-        </div>
+        </FormItem>
+        <FormItem>
         <Button type="primary" @click="update_select()">确定</Button>
-    </div>
+        </FormItem>
+    </Form>
 </template>
 
 <script>
@@ -48,8 +39,8 @@
       //  components: {Radio},
         data() {
             return {
-                d_price: "不限",
-                d_area: "不限",
+                d_price: [1000, 5000],
+                d_area: [10, 50],
                 d_type: "不限",
             };
         },
@@ -70,7 +61,7 @@
     .item-class-show {
         margin: 15px auto;
         width: 100%;
-        text-align: center;
+        /*text-align: center;*/
     }
 
     .item-class-group {

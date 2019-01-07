@@ -22,11 +22,18 @@ const routers = [
         component: (resolve) => require(['./views/house.vue'], resolve)
     },
     {
+        path: '/addhouse',
+        meta: {
+            title: '新增房屋'
+        },
+        component: (resolve) => require(['./views/addhouse.vue'], resolve)
+    },
+    {
         path: '/login',
         name: 'login',
         meta: {
-          title: 'Login - 登录',
-          hideInMenu: true
+            title: 'Login - 登录',
+            hideInMenu: true
         },
         component: (resolve) => require(['./views/login.vue'], resolve)
     },

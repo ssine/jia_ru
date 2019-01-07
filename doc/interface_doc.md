@@ -20,6 +20,7 @@
 - [ ] `/modify/password`
 - [ ] `/modify/phone`
 - [ ] `/data/house-info`
+- [ ] `/data/rental-info`
 - [x] `/test`
 
 接口声明样例：
@@ -422,6 +423,59 @@ URL: `/data/house-info`
     "pay_method": "月",
     "cost": 2500,
     "house_state": "已租",
+    "register_time": "1959/4/12",
+    "modify_time": "1959/6/12"
+    
+}
+```
+
+---
+
+URL: `/data/rental-info`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>rental_id</td><td>求租信息的id</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>user_id</td><td>发布用户id</td></tr>
+<tr><td>district</td><td>地区</td></tr>
+<tr><td>community</td><td>小区名</td></tr>
+<tr><td>unit</td><td>具体楼门号</td></tr>
+<tr><td>type</td><td>房屋类型</td></tr>
+<tr><td>area</td><td>房屋面积</td></tr>
+<tr><td>floor</td><td>房屋楼层</td></tr>
+<tr><td>elevator</td><td>是否有电梯</td></tr>
+<tr><td>description</td><td>房屋描述</td></tr>
+<tr><td>deposit</td><td>押金</td></tr>
+<tr><td>pay_method</td><td>租金支付方式（月、季、年）</td></tr>
+<tr><td>cost</td><td>租金</td></tr>
+<tr><td>register_time</td><td>注册时间 (YYYY/MM/DD)</td></tr>
+<tr><td>modify_time</td><td>修改时间 (YYYY/MM/DD)</td></tr>
+</table>
+
+**Response Example**:
+
+```json
+{
+    "user_id": 567,
+    "district": "北京市海淀区西土城路",
+    "community": "金典小区",
+    "unit": "8单元",
+    "type": "五居",
+    "area": 20,
+    "floor": 8,
+    "elevator": 1,
+    "description": "这房豪华",
+    "deposit": 2000,
+    "pay_method": "月",
+    "cost": 2500,
     "register_time": "1959/4/12",
     "modify_time": "1959/6/12"
     
