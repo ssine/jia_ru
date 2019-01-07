@@ -20,7 +20,10 @@
             GoodsList,
         },
         name: "allhouse",
-        methods: {}
+        methods: {},
+        created: function () {
+
+        },
     }
 </script>
 

@@ -47,7 +47,7 @@
         </div>
 
         <Footer></Footer>
-        <Spin size="large" fix v-if="isLoading"></Spin>
+        <!--<Spin size="large" fix v-if="isLoading"></Spin>-->
     </div>
 </template>
 
@@ -62,30 +62,46 @@
         data() {
             return {
                 house: [],
+                house_type: {}
             };
         },
         computed: {},
         methods: {
 
-            update_house_list(data) {
+            get_house_list(data) {
                 console.log(data);
+                this.axios.post(
+                    'http://39.105.181.135/operation/register/',
+                    Qs.stringify(this.$data.regForm)
+                ).then((response) => {
+                    console.log(response.data);
+                    switch (response.data.state) {
+                        case 100:
+                        case 120:
+                            window.location.href = './login';
+                            break;
+                        case 220:
+                            alert('注册失败，请重试。');
+                            break;
+                        case 221:
+                            alert('注册失败，用户名已被使用。');
+                            break;
+                        case 222:
+                            alert('注册失败，用户信息错误。');
+                            break;
+                    }
+                });
             },
             update_page_num(pagenum) {
                 console.log(pagenum);
-            }
+            },
+
         },
         created() {
 
-
-            this.axios.get('https://www.easy-mock.com/mock/5c2f26227106f779e7eaca4d/jr/gethouselist').then((response) => {
-                console.log(response.data);
-                this.house = response.data.house_list;
-                console.log(this.orderGoodsList);
-
-            })
         },
         mounted() {
-
+            get_house_list(data);
         },
         components: {
             Sreach,

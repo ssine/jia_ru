@@ -66,39 +66,6 @@ URL: `/gethouselist`
 - 4：按面积降序
 
 </td></tr>
-<tr><td>district</td><td>
-
-房屋所在的区域 (0 - 4)
-
-- 0：不限
-- 1：海淀区
-- 2: 东城区
-- 3：西城区
-- 4：昌平区
-- 其他地区待定
-
-</td></tr>
-<tr><td>range_of_prices</td><td>
-
-价格范围 (0 - 3)
-
-- 0：不限
-- 1：2000以下
-- 2：2000~4000
-- 3：4000以上
-
-</td></tr>
-<tr><td>range_of_area</td><td>
-
-面积范围 (0 - 4)
-
-- 0: 不限
-- 1：10平米以下
-- 2：10-20
-- 3：20-30
-- 4：30以上
-
-</td></tr>
 <tr><td>house_type</td><td>
 
 房屋类型 (0 - 4)
@@ -148,9 +115,9 @@ URL: `/gethouselist`
 {
     "seq":1,
     "orderby":0,
-    "district":2,
-    "range_of_prices":0,
-    "range_of_area":4,
+    "district":"山东省青岛市崂山区五一街道",
+    "range_of_prices":[0,10000], //最小0，最大100
+    "range_of_area":[0,10000], //最小0，最大100
     "house_type":2,
     "formaldehyde":1
 }
@@ -168,7 +135,7 @@ URL: `/gethouselist`
     "area": 200,
     "price": 30000,
     "house_type":2,
-    "formaldehyde": 0
+    "formaldehyde": 1
 }, {
     "id": 2,
     "img": "http://www.pronhub.com/sporthouse.jpg",
