@@ -1,55 +1,75 @@
 <template>
-    <div class="index">
-        <Row type="flex" justify="center" align="middle">
-            <Col span="24">
-                <h1>
-                    <img src="../images/logo.png">
-                </h1>
-                <h2>
-                    <p>Welcome to your iView app!</p>
-                    <Button @click="handleStart">Start iView</Button>
-                </h2>
-            </Col>
-        </Row>
+  <div class="index">
+    <jiarunav></jiarunav>
+    <div class="header-image">
+      <h1 class="title">甲如</h1>
+      <h2 class="subtitle">深呼吸 放心住</h2>
     </div>
+    <div class="function-entry">
+      <ButtonGroup>
+        <Button type="primary" size="large" onclick="window.open('./allhouse', '_self')">
+          <Icon type="ios-arrow-back"></Icon>
+          我要租房
+        </Button>
+        <Button type="primary" size="large" onclick="window.open('./house', '_self')">
+          我要出租
+          <Icon type="ios-arrow-forward"></Icon>
+        </Button>
+      </ButtonGroup>
+    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        methods: {
-            handleStart () {
-                this.$Modal.info({
-                    title: 'Bravo',
-                    content: 'Now, enjoy the convenience of iView.'
-                });
-            }
-        }
+import jiarunav from '@/components/jiarunav.vue';
+
+export default {
+  components: {
+    jiarunav
+  },
+  name: "index",
+  methods: {
+    handleStart () {
+      this.$Modal.info({
+        title: 'Bravo',
+        content: 'Now, enjoy the convenience of iView.'
+      });
     }
+  }
+}
+
 </script>
 
-<style scoped lang="less">
-    .index{
-        width: 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        text-align: center;
-        h1{
-            height: 150px;
-            img{
-                height: 100%;
-            }
-        }
-        h2{
-            color: #666;
-            margin-bottom: 200px;
-            p{
-                margin: 0 0 50px;
-            }
-        }
-        .ivu-row-flex{
-            height: 100%;
-        }
-    }
+<style>
+.header-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/banner.jpg);
+    background-position: bottom center;
+    background-size: cover;
+    text-align: center;
+}
+
+.title {
+  padding-top: 3em;
+  color: black;
+  font-size: 4em;
+}
+
+.subtitle {
+  padding-top: 1em;
+  color: black;
+}
+
+.function-entry {
+  margin: 0 auto;
+  margin-top: 30vw;
+  text-align: center;
+  width: 400px;
+}
+
 </style>

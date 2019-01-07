@@ -7,6 +7,13 @@ const routers = [
         component: (resolve) => require(['./views/index.vue'], resolve)
     },
     {
+        path: '/index',
+        meta: {
+            title: '首页'
+        },
+        component: (resolve) => require(['./views/index.vue'], resolve)
+    },
+    {
         path: '/allhouse',
         meta: {
             title: '我要求租'
