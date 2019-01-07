@@ -15,8 +15,14 @@ import BaiduMap from 'vue-baidu-map'
 import 'swiper/dist/css/swiper.css'
 import VueJsonp from 'vue-jsonp'
 import iviewArea from 'iview-area';
+import VueCropper from 'vue-cropper'
+import VueSpeech from 'vue-speech'
 
-Vue.use(VueJsonp)
+
+Vue.use(VueSpeech)
+
+Vue.use(VueCropper);
+Vue.use(VueJsonp);
 Vue.use(VueRouter);
 Vue.use(iView);
 Vue.use(Vuex);

@@ -8,7 +8,7 @@
             <GoodsClassNav @update_house_list="update_house_list"></GoodsClassNav>
             <!-- 商品展示容器 -->
             <div class="">
-                <Row class="house-item" v-for="item in house" :key="index">
+                <Row class="house-item" v-for="item in house">
                     <Col span="8">
                         <img :src="item.img"/>
                     </Col>
@@ -22,7 +22,7 @@
                             {{item.description}}
                         </h4>
                         <div class="item-icon">
-                            <Tag v-for="iitem in item.tag" color="purple" :key="index">{{iitem}}</Tag>
+                            <Tag v-for="iitem in item.tag" color="purple">{{iitem}}</Tag>
                         </div>
                         <h2 class="item-area">
                             {{item.area}}平米
@@ -57,11 +57,11 @@
     import Footer from '@/components/footer/Footer';
 
     export default {
-        name: 'GoodsList',
+        name: 'allrent',
 
         data() {
             return {
-                house: [],
+                rental: [],
             };
         },
         computed: {},
