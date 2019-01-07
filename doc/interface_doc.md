@@ -14,16 +14,16 @@
 - [ ] `/data/user-info`
 - [ ] `/data/user-published`
 - [ ] `/data/user-asked`
-- [ ] `/query/user-exist`
-- [ ] `/operation/login`
-- [ ] `/operation/register`
-- [ ] `/modify/password`
-- [ ] `/modify/phone`
+- [x] `/query/user-exist`
+- [x] `/operation/login`
+- [x] `/operation/register`
+- [x] `/modify/password`
+- [x] `/modify/phone`
 - [ ] `/query/apply-notification`
 - [ ] `/query/provide-notification`
 - [ ] `/action/accept-notification`
 - [ ] `/action/reject-notification`
-- [ ] `/data/house-info`
+- [x] `/data/house-info`
 - [ ] `/data/rental-info`
 - [x] `/test`
 
