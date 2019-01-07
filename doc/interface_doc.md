@@ -13,7 +13,7 @@
 - [ ] `/gethouselist`
 - [ ] `/data/user-info`
 - [ ] `/data/user-published`
-- [ ] `/data/user-applied`
+- [ ] `/data/user-asked`
 - [ ] `/query/user-exist`
 - [ ] `/operation/login`
 - [ ] `/operation/register`
@@ -236,75 +236,24 @@ URL: `/data/user-published`
 
 <table>
 <tr><th>key name</th><th>value description</th></tr>
-<tr><td>houses</td><td>
+<tr><td>data</td><td>
 
 一个房屋的json数组，每一个房屋包含
 
-- house_id: 房屋id，作为房屋的主键
-- img: 房屋图片的url
-- name: 房屋名字
-- description: 房屋描述
-- tag：标签，以下划线_隔开
-- area：房屋面积
-- price：房屋价格
-- house_type: 房屋类型
-- formaldehyde：是否有甲醛
+- house_id: 房屋id
+- location: 房屋地理位置
+- rental: 租金
+- state: 房屋状态(待租、已租)
 
 </td></tr>
 </table>
 
-**Response Example**:
-
-参见 `/gethouselist` 的返回样例。
-
 ---
 
-URL: `/data/user-applied`
-
-查询当前用户请求租赁的所有房源
-
-!! 有两样：发布房源、求租信息，请求房源、求租信息。 这一块待定。
-
-**Request**:
-
-<table>
-<tr><th>key name</th><th>value description</th></tr>
-<tr><td>无参数</td><td>-</td></tr>
-</table>
-
-**Response**:
-
-<table>
-<tr><th>key name</th><th>value description</th></tr>
-<tr><td>houses</td><td>
-
-一个房屋的json数组，每一个房屋包含
-
-- house_id: 房屋id，作为房屋的主键
-- img: 房屋图片的url
-- name: 房屋名字
-- description: 房屋描述
-- tag：标签，以下划线_隔开
-- area：房屋面积
-- price：房屋价格
-- house_type: 房屋类型
-- formaldehyde：是否有甲醛
-
-</td></tr>
-</table>
-
-**Response Example**:
-
-参见 `/gethouselist` 的返回样例。
-
----
-
-URL: `/data/user-applied`
+URL: `/data/user-asked`
 
 查询当前用户发布的所有求租信息
 
-!! 有两样：发布房源、求租信息，请求房源、求租信息。 这一块待定。
-
 **Request**:
 
 <table>
@@ -316,26 +265,17 @@ URL: `/data/user-applied`
 
 <table>
 <tr><th>key name</th><th>value description</th></tr>
-<tr><td>houses</td><td>
+<tr><td>data</td><td>
 
 一个房屋的json数组，每一个房屋包含
 
-- house_id: 房屋id，作为房屋的主键
-- img: 房屋图片的url
-- name: 房屋名字
+- location: 房屋地理位置
 - description: 房屋描述
-- tag：标签，以下划线_隔开
-- area：房屋面积
-- price：房屋价格
-- house_type: 房屋类型
-- formaldehyde：是否有甲醛
+- rental: 租金
+- state: 求租信息状态(已成交/未成交)
 
 </td></tr>
 </table>
-
-**Response Example**:
-
-参见 `/gethouselist` 的返回样例。
 
 ---
 
