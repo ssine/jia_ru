@@ -548,7 +548,7 @@ URL: `/data/rental-info`
 
 URL: `/data/deal-details/`
 
-查询某个时间段后某个位置的交易记录明细
+查询某个时间段里某个位置的交易记录明细
 
 **Request**:
 
