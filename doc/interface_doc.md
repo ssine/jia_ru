@@ -59,6 +59,10 @@ URL: `/gethouselist`
 <table>
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>seq</td><td>表示当前页码的序号 (0, 1, 2...)</td></tr>
+<tr><td>district</td><td>筛选地区</td></tr>
+<tr><td>range_of_floor</td><td>楼层条件</td></tr>
+<tr><td>range_of_prices</td><td>价格条件</td></tr>
+<tr><td>range_of_area</td><td>面积条件</td></tr>
 <tr><td>orderby</td><td>
 
 排序方式 (0 - 4)
@@ -81,9 +85,9 @@ URL: `/gethouselist`
 - 4：其他
 
 </td></tr>
-<tr><td>formaldehyde</td><td>
+<tr><td>elevator</td><td>
 
-是否有甲醛 (0 - 2)
+是否有电梯 (0 - 2)
 
 - 0：不限
 - 1：有
@@ -108,7 +112,7 @@ URL: `/gethouselist`
 - area：房屋面积
 - price：房屋价格
 - house_type: 房屋类型
-- formaldehyde：是否有甲醛
+- elevator：是否有甲醛
 
 </td></tr>
 </table>
@@ -120,10 +124,11 @@ URL: `/gethouselist`
     "seq":1,
     "orderby":0,
     "district":"山东省青岛市崂山区五一街道",
-    "range_of_prices":[0,10000], //最小0，最大100
-    "range_of_area":[0,10000], //最小0，最大100
+    "range_of_prices":[0,10000], 
+    "range_of_area":[0,10000], 
+    "range_of_floor":[0,5], 
     "house_type":2,
-    "formaldehyde":1
+    "elevator":1
 }
 ```
 
@@ -139,7 +144,7 @@ URL: `/gethouselist`
     "area": 200,
     "price": 30000,
     "house_type":2,
-    "formaldehyde": 1
+    "elevator": 1
 }, {
     "id": 2,
     "img": "http://www.pronhub.com/sporthouse.jpg",
@@ -149,7 +154,106 @@ URL: `/gethouselist`
     "area": 10,
     "price": 1000,
     "house_type":2,
-    "formaldehyde": 0
+    "elevator": 1
+}]
+```
+
+---
+
+URL: `/getrentallist`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>seq</td><td>表示当前页码的序号 (0, 1, 2...)</td></tr>
+<tr><td>district</td><td>筛选地区</td></tr>
+<tr><td>range_of_floor</td><td>楼层条件</td></tr>
+<tr><td>orderby</td><td>
+
+排序方式 (0 - 2)
+
+- 0：不排序
+- 1：按价格升序
+- 2：按价格降序
+
+
+</td></tr>
+<tr><td>house_type</td><td>
+
+房屋类型 (0 - 4)
+
+- 0: 不限
+- 1：一居
+- 2：二居
+- 3：三居
+- 4：其他
+
+</td></tr>
+<tr><td>elevator</td><td>
+
+是否有电梯 (0 - 2)
+
+- 0：不限
+- 1：有
+- 2：没有
+
+</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>houses</td><td>
+
+一个求租信息的json数组，每一个求租信息包含
+
+- rental_id: 求租信息id，作为求租信息的主键
+- name: 求租信息名字
+- description: 求租信息描述
+- area：房屋面积
+- price：房屋价格
+- house_type: 房屋类型
+- elevator：是否有电梯
+
+</td></tr>
+</table>
+
+**Request example**:
+
+```json
+{
+    "seq":1,
+    "orderby":0,
+    "district":"山东省青岛市崂山区五一街道",
+    "range_of_floor":[0,5], 
+    "house_type":2,
+    "elevator":1
+}
+```
+
+**Response example**:
+
+```json
+[{
+    "id": 1,
+    "name": "紫禁城西部湖中央超豪华2居室",
+    "description": "长者故居，你值得拥有",
+    "tag": ["独卫","集体供暖","独立阳台"],
+    "area": 200,
+    "price": 30000,
+    "house_type":2,
+    "elevator": 1
+}, {
+    "id": 2,
+    "name": "秦城1居室",
+    "description": "7x24小时专人守护",
+    "tag": ["独卫","集体供暖","独立阳台"],
+    "area": 10,
+    "price": 1000,
+    "house_type":2,
+    "elevator": 0
 }]
 ```
 
