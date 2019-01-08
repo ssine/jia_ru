@@ -11,6 +11,7 @@
 **接口完成情况**:
 
 - [ ] `/gethouselist`
+- [ ] `/getrentallist`
 - [ ] `/data/user-info`
 - [ ] `/data/user-published`
 - [ ] `/data/user-asked`
@@ -25,8 +26,17 @@
 - [ ] `/action/reject-notification`
 - [x] `/data/house-info`
 - [ ] `/data/rental-info`
+- [ ] `/data/addhouse`
+- [ ] `/data/addrental`
+- [ ] `/modify/house` 与addhouse相同
+- [ ] `/modify/rental` 与addrental相同
 - [ ] `/data/deal-details/`
+- [ ] `/data/city-statistics/`
+- [ ] `/operation/apply-house/`
+- [ ] `/data/uploadfile/`
 - [x] `/test`
+
+
 
 接口声明样例：
 
@@ -56,6 +66,10 @@ URL: `/gethouselist`
 <table>
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>seq</td><td>表示当前页码的序号 (0, 1, 2...)</td></tr>
+<tr><td>district</td><td>筛选地区</td></tr>
+<tr><td>range_of_floor</td><td>楼层条件</td></tr>
+<tr><td>range_of_prices</td><td>价格条件</td></tr>
+<tr><td>range_of_area</td><td>面积条件</td></tr>
 <tr><td>orderby</td><td>
 
 排序方式 (0 - 4)
@@ -78,9 +92,9 @@ URL: `/gethouselist`
 - 4：其他
 
 </td></tr>
-<tr><td>formaldehyde</td><td>
+<tr><td>elevator</td><td>
 
-是否有甲醛 (0 - 2)
+是否有电梯 (0 - 2)
 
 - 0：不限
 - 1：有
@@ -105,7 +119,7 @@ URL: `/gethouselist`
 - area：房屋面积
 - price：房屋价格
 - house_type: 房屋类型
-- formaldehyde：是否有甲醛
+- elevator：是否有甲醛
 
 </td></tr>
 </table>
@@ -117,10 +131,11 @@ URL: `/gethouselist`
     "seq":1,
     "orderby":0,
     "district":"山东省青岛市崂山区五一街道",
-    "range_of_prices":[0,10000], //最小0，最大100
-    "range_of_area":[0,10000], //最小0，最大100
+    "range_of_prices":[0,10000], 
+    "range_of_area":[0,10000], 
+    "range_of_floor":[0,5], 
     "house_type":2,
-    "formaldehyde":1
+    "elevator":1
 }
 ```
 
@@ -136,7 +151,7 @@ URL: `/gethouselist`
     "area": 200,
     "price": 30000,
     "house_type":2,
-    "formaldehyde": 1
+    "elevator": 1
 }, {
     "id": 2,
     "img": "http://www.pronhub.com/sporthouse.jpg",
@@ -146,7 +161,106 @@ URL: `/gethouselist`
     "area": 10,
     "price": 1000,
     "house_type":2,
-    "formaldehyde": 0
+    "elevator": 1
+}]
+```
+
+---
+
+URL: `/getrentallist`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>seq</td><td>表示当前页码的序号 (0, 1, 2...)</td></tr>
+<tr><td>district</td><td>筛选地区</td></tr>
+<tr><td>range_of_floor</td><td>楼层条件</td></tr>
+<tr><td>orderby</td><td>
+
+排序方式 (0 - 2)
+
+- 0：不排序
+- 1：按价格升序
+- 2：按价格降序
+
+
+</td></tr>
+<tr><td>house_type</td><td>
+
+房屋类型 (0 - 4)
+
+- 0: 不限
+- 1：一居
+- 2：二居
+- 3：三居
+- 4：其他
+
+</td></tr>
+<tr><td>elevator</td><td>
+
+是否有电梯 (0 - 2)
+
+- 0：不限
+- 1：有
+- 2：没有
+
+</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>houses</td><td>
+
+一个求租信息的json数组，每一个求租信息包含
+
+- rental_id: 求租信息id，作为求租信息的主键
+- name: 求租信息名字
+- description: 求租信息描述
+- area：房屋面积
+- price：房屋价格
+- house_type: 房屋类型
+- elevator：是否有电梯
+
+</td></tr>
+</table>
+
+**Request example**:
+
+```json
+{
+    "seq":1,
+    "orderby":0,
+    "district":"山东省青岛市崂山区五一街道",
+    "range_of_floor":[0,5], 
+    "house_type":2,
+    "elevator":1
+}
+```
+
+**Response example**:
+
+```json
+[{
+    "id": 1,
+    "name": "紫禁城西部湖中央超豪华2居室",
+    "description": "长者故居，你值得拥有",
+    "tag": ["独卫","集体供暖","独立阳台"],
+    "area": 200,
+    "price": 30000,
+    "house_type":2,
+    "elevator": 1
+}, {
+    "id": 2,
+    "name": "秦城1居室",
+    "description": "7x24小时专人守护",
+    "tag": ["独卫","集体供暖","独立阳台"],
+    "area": 10,
+    "price": 1000,
+    "house_type":2,
+    "elevator": 0
 }]
 ```
 
@@ -494,6 +608,59 @@ URL: `/data/house-info`
 
 ---
 
+URL: `/data/addhouse`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>house_id</td><td>房屋的id</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>user_id</td><td>发布用户id</td></tr>
+<tr><td>district</td><td>地区</td></tr>
+<tr><td>community</td><td>小区名</td></tr>
+<tr><td>unit</td><td>具体楼门号</td></tr>
+<tr><td>type</td><td>房屋类型</td></tr>
+<tr><td>area</td><td>房屋面积</td></tr>
+<tr><td>floor</td><td>房屋楼层</td></tr>
+<tr><td>elevator</td><td>是否有电梯</td></tr>
+<tr><td>description</td><td>房屋描述</td></tr>
+<tr><td>imgs</td><td>房屋照片数组</td></tr>
+<tr><td>deposit</td><td>押金</td></tr>
+<tr><td>pay_method</td><td>租金支付方式（月、季、年）</td></tr>
+<tr><td>cost</td><td>租金</td></tr>
+</table>
+
+**Response Example**:
+
+```json
+{
+    "user_id": 567,
+    "district": "北京市海淀区西土城路",
+    "community": "金典小区",
+    "unit": "8单元",
+    "type": "五居",
+    "area": 20,
+    "floor": 8,
+    "elevator": 1,
+    "description": "这房豪华",
+    "imgs": [
+    "a.jpg",
+    "b.jpg"
+    ],
+    "deposit": 2000,
+    "pay_method": "月",
+    "cost": 2500,
+}
+```
+
+---
+
 URL: `/data/rental-info`
 
 **Request**:
@@ -510,9 +677,7 @@ URL: `/data/rental-info`
 <tr><td>user_id</td><td>发布用户id</td></tr>
 <tr><td>district</td><td>地区</td></tr>
 <tr><td>community</td><td>小区名</td></tr>
-<tr><td>unit</td><td>具体楼门号</td></tr>
 <tr><td>type</td><td>房屋类型</td></tr>
-<tr><td>area</td><td>房屋面积</td></tr>
 <tr><td>floor</td><td>房屋楼层</td></tr>
 <tr><td>elevator</td><td>是否有电梯</td></tr>
 <tr><td>description</td><td>房屋描述</td></tr>
@@ -530,9 +695,7 @@ URL: `/data/rental-info`
     "user_id": 567,
     "district": "北京市海淀区西土城路",
     "community": "金典小区",
-    "unit": "8单元",
     "type": "五居",
-    "area": 20,
     "floor": 8,
     "elevator": 1,
     "description": "这房豪华",
@@ -541,6 +704,50 @@ URL: `/data/rental-info`
     "cost": 2500,
     "register_time": "1959/4/12",
     "modify_time": "1959/6/12"
+}
+```
+
+---
+
+URL: `/data/addrental`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>rental_id</td><td>求租信息的id</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>user_id</td><td>发布用户id</td></tr>
+<tr><td>district</td><td>地区</td></tr>
+<tr><td>community</td><td>小区名</td></tr>
+<tr><td>type</td><td>房屋类型</td></tr>
+<tr><td>floor</td><td>房屋楼层</td></tr>
+<tr><td>elevator</td><td>是否有电梯</td></tr>
+<tr><td>description</td><td>房屋描述</td></tr>
+<tr><td>deposit</td><td>押金</td></tr>
+<tr><td>pay_method</td><td>租金支付方式（月、季、年）</td></tr>
+<tr><td>cost</td><td>租金</td></tr>
+</table>
+
+**Response Example**:
+
+```json
+{
+    "user_id": 567,
+    "district": "北京市海淀区西土城路",
+    "community": "金典小区",
+    "type": "五居",
+    "floor": 8,
+    "elevator": 1,
+    "description": "这房豪华",
+    "deposit": 2000,
+    "pay_method": "月",
+    "cost": 2500,
 }
 ```
 
@@ -597,17 +804,113 @@ URL: `/data/deal-details/`
             "user": "张翼德",
             "location": "北京市海淀区金典小区",
             "date": "8/9/1964",
-            "rental": "9999",
-            "commission": "100"
+            "rental": 9999,
+            "commission": 100
         },
         {
             "owner": "关云长",
             "user": "张翼德",
             "location": "北京市海淀区金典小区",
             "date": "9/8/1964",
-            "rental": "6666",
-            "commission": "999"
+            "rental": 6666,
+            "commission": 999
         }
     ]
 }
 ```
+
+---
+
+URL: `/data/city-statistics/`
+
+查询所有城市的统计信息
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>none</td><td>-</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>data</td><td>
+
+城市统计信息的列表，每个城市一项。 每项包含的属性：
+
+- city_name 城市名
+- total_count 累计成交笔数
+- total_commission 租客用户名
+
+</td></tr>
+</table>
+
+**Response Example**:
+
+```json
+{
+    "data": [
+        {
+            "city_name": "北京",
+            "total_count": 3,
+            "total_commission": 100
+        },
+        {
+            "city_name": "青岛",
+            "total_count": 3,
+            "total_commission": 100
+        }
+    ]
+}
+```
+
+---
+
+URL: `/operation/apply-house/`
+
+发起申请租房请求
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>house_id</td><td>所要申请的房屋id</td></tr>
+<tr><td>period</td><td>租期(月)</td></tr>
+<tr><td>start_date</td><td>开始日期 (mm/dd/yyyy)</td></tr>
+<tr><td>end_date</td><td>结束日期 (mm/dd/yyyy)</td></tr>
+</table>
+
+**Request Example**:
+
+```json
+{
+    "house_id": 21,
+    "period": 3,
+    "start_date": "1/1/1970",
+    "end_date": "4/1/2019",
+}
+```
+
+**Response**:
+
+state
+
+---
+
+URL: `/data/uploadfile/`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>file</td><td>二进制文件</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>url</td><td>文件url</td></tr>
+</table>
