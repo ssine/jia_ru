@@ -794,34 +794,3 @@ URL: `/operation/apply-house/`
 **Response**:
 
 返回是否成功的状态即可
-
-```
-
-URL: `/operation/apply-house/`
-
-发起申请租房请求
-
-**Request**:
-
-<table>
-<tr><th>key name</th><th>value description</th></tr>
-<tr><td>house_id</td><td>所要申请的房屋id</td></tr>
-<tr><td>period</td><td>租期(月)</td></tr>
-<tr><td>start_date</td><td>开始日期 (mm/dd/yyyy)</td></tr>
-<tr><td>end_date</td><td>结束日期 (mm/dd/yyyy)</td></tr>
-</table>
-
-**Request Example**:
-
-```json
-{
-    "house_id": 21,
-    "period": 3,
-    "start_date": "1/1/1970",
-    "end_date": "4/1/2019",
-}
-```
-
-**Response**:
-
-返回是否成功的状态即可
