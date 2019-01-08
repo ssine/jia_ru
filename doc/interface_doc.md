@@ -617,9 +617,7 @@ URL: `/data/rental-info`
 <tr><td>user_id</td><td>发布用户id</td></tr>
 <tr><td>district</td><td>地区</td></tr>
 <tr><td>community</td><td>小区名</td></tr>
-<tr><td>unit</td><td>具体楼门号</td></tr>
 <tr><td>type</td><td>房屋类型</td></tr>
-<tr><td>area</td><td>房屋面积</td></tr>
 <tr><td>floor</td><td>房屋楼层</td></tr>
 <tr><td>elevator</td><td>是否有电梯</td></tr>
 <tr><td>description</td><td>房屋描述</td></tr>
@@ -637,9 +635,7 @@ URL: `/data/rental-info`
     "user_id": 567,
     "district": "北京市海淀区西土城路",
     "community": "金典小区",
-    "unit": "8单元",
     "type": "五居",
-    "area": 20,
     "floor": 8,
     "elevator": 1,
     "description": "这房豪华",
@@ -765,6 +761,8 @@ URL: `/data/city-statistics/`
     ]
 }
 ```
+
+---
 
 URL: `/operation/apply-house/`
 
