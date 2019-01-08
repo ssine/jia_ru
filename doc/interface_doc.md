@@ -33,7 +33,10 @@
 - [ ] `/data/deal-details/`
 - [ ] `/data/city-statistics/`
 - [ ] `/operation/apply-house/`
+- [ ] `/data/uploadfile/`
 - [x] `/test`
+
+
 
 接口声明样例：
 
@@ -892,4 +895,22 @@ URL: `/operation/apply-house/`
 
 **Response**:
 
-返回是否成功的状态即可
+state
+
+---
+
+URL: `/data/uploadfile/`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>file</td><td>二进制文件</td></tr>
+</table>
+
+**Response**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>url</td><td>文件url</td></tr>
+</table>
