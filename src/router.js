@@ -22,6 +22,14 @@ const routers = [
         //component: (resolve) => require(['./components/GoodsList.vue'], resolve)
     },
     {
+        path: '/allrental',
+        meta: {
+            title: '我要租房'
+        },
+        component: (resolve) => require(['./views/allrental.vue'], resolve)
+        //component: (resolve) => require(['./components/GoodsList.vue'], resolve)
+    },
+    {
         path: '/house',
         meta: {
             title: '房屋'

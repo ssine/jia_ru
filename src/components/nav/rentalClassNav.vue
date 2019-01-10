@@ -4,12 +4,7 @@
         <FormItem label="价格范围" class="item-class-group">
             <Slider v-model="d_price" :step="500" :max="10000" show-stops range></Slider>
         </FormItem>
-        <FormItem label="面积范围:" class="item-class-group">
-
-            <Slider v-model="d_area" :step="10" :max="200" show-stops range></Slider>
-        </FormItem>
         <FormItem label="房屋类型:" class="item-class-group">
-
             <RadioGroup v-model="d_type" type="button">
                 <Radio label="不限"></Radio>
                 <Radio label="一居"></Radio>
@@ -19,7 +14,7 @@
             </RadioGroup>
         </FormItem>
         <FormItem>
-        <Button type="primary" @click="update_select()">确定</Button>
+            <Button type="primary" @click="update_select()">确定</Button>
         </FormItem>
     </Form>
 </template>
@@ -28,8 +23,8 @@
     //import Radio from "../../../dist/vendors";
 
     export default {
-        name: 'GoodsClassNav',
-      //  components: {Radio},
+        name: 'rentalClassNav',
+        //  components: {Radio},
         data() {
             return {
                 d_price: [1000, 5000],
@@ -38,13 +33,13 @@
             };
         },
         methods: {
-            update_select: function(){
+            update_select: function () {
                 let data = {
                     d_price: this.d_price,
                     d_area: this.d_area,
                     d_type: this.d_type,
                 }
-                this.$emit('update_house_list',data);
+                this.$emit('update_house_list', data);
             }
         }
     };

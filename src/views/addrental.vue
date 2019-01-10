@@ -6,7 +6,6 @@
             <div>
                 <Steps :current="page_num">
                     <Step title="填写基本信息" icon="ios-person"></Step>
-                    <Step title="上传照片" icon="ios-camera"></Step>
                     <Step title="确认" icon="ios-mail"></Step>
                 </Steps>
             </div>
@@ -20,11 +19,11 @@
 
                     <Input v-model="com_name" placeholder="新华" clearable style="width: 200px"/>
                     小区
-                    <Input v-model="com_unit" placeholder="8" clearable style="width: 200px"/>
-                    单元
-                    <Input v-model="com_floor" placeholder="2" clearable style="width: 200px"/>
-                    层
                 </FormItem>
+                <FormItem label="l楼层" class="form_line">
+                    <InputNumber :step="1" :min="1" v-model="com_floor"></InputNumber>
+                </FormItem>
+
                 <FormItem label="房屋类型" class="form_line">
 
                     <RadioGroup v-model="house_type">
@@ -34,11 +33,7 @@
                         <Radio label="其他"></Radio>
                     </RadioGroup>
                 </FormItem>
-                <FormItem label="房屋面积" class="form_line">
 
-                    <Input v-model="area" placeholder="30" style="width: 300px"/>
-                    平米
-                </FormItem>
                 <FormItem label="电梯" class="form_line">
 
                     <Switch v-model="elevator"></Switch>
@@ -50,8 +45,6 @@
                 </FormItem>
                 <FormItem label="押金" class="form_line">
                     <InputNumber :step="100" :min="300" v-model="deposit"></InputNumber>
-
-
                 </FormItem>
                 <FormItem label="支付方式" class="form_line">
 
@@ -69,45 +62,28 @@
 
 
             </Form>
-            <div v-show="page_num === 1" class="upload_img">
-                <Upload
-                        multiple
-                        type="drag"
-                        action="//jsonplaceholder.typicode.com/posts/">
-                    <div style="padding: 20px 0">
-                        <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-                        <p>Click or drag files here to upload</p>
-                    </div>
-                </Upload>
-            </div>
-            <div v-show="page_num === 2" class="confrim">
+            <div v-show="page_num === 1" class="confrim">
                 <Form :label-position="left" :label-width="100" class="form">
                     <FormItem label="房屋地区" class="form_line">
                         {{district_str}}
                     </FormItem>
 
                     <FormItem label="房屋地址" class="form_line">
-                        {{com_name}}{{com_unit}}{{com_floor}}
+                        {{com_name}}小区{{com_floor}}层楼
                     </FormItem>
                     <FormItem label="房屋类型" class="form_line">
                         {{house_type}}
                     </FormItem>
-                    <FormItem label="房屋面积" class="form_line">
-                        {{area}}
-                        平米
-                    </FormItem>
+
                     <FormItem label="电梯" class="form_line">
                         <span v-show="elevator === true">有</span>
                         <span v-show="elevator === false">无</span>
                     </FormItem>
                     <FormItem label="房屋描述" class="form_line">
-
                         <p>{{description}}</p>
                     </FormItem>
                     <FormItem label="押金" class="form_line">
                         {{deposit}}
-
-
                     </FormItem>
                     <FormItem label="支付方式" class="form_line">
                         {{pay_method}}
@@ -139,10 +115,8 @@
                 page_num: 0,
                 c_district: [],
                 com_name: "",
-                com_unit: "",
                 com_floor: "",
                 house_type: "一居",
-                area: "",
                 elevator: true,
                 description: "",
                 deposit: 300,
