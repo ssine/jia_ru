@@ -33,7 +33,7 @@
 - [ ] `/data/deal-details/`
 - [ ] `/data/city-statistics/`
 - [x] `/operation/apply-house/`
-- [ ] `/data/uploadfile/`
+- [x] `/data/uploadfile/`
 - [x] `/test`
 
 
