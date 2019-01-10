@@ -54,6 +54,7 @@
                                 <div class="house_district house_price">${{house.cost}}/月</div>
                                 <div class="house_district house_price">{{house.pay_method}}付</div>
                                 <div class="house_district house_price">押${{house.deposit}}</div>
+                                <Button type="warning" @click="rent_this_house">我要租</Button>
                             </Card>
                         </Affix>
                     </div>
@@ -104,6 +105,11 @@
                 rate_value: 3.5,
                 location: {},
                 location_name: '',
+            }
+        },
+        methods: {
+            rent_this_house: function () {
+                this.$router.push({path: '/rent_this_house', query: {house_id: this.house_id}});
             }
         },
         created() {

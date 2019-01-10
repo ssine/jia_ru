@@ -130,7 +130,7 @@
     import jiarunav from '@/components/jiarunav.vue';
 
     export default {
-        name: "addhouse",
+        name: "apply_house",
         components: {
             jiarunav,
         },
@@ -170,19 +170,14 @@
                 console.log(this.c_district);
                 this.district_str = '';
 
-                for (let i = 0; i < this.c_district.length; i++) {
-                    if (i !== 0) {
-                        this.district_str += '#';
-                    }
+                for (var i = 0; i < this.c_district.length; i++) {
+                    // this.district_str += c_district[i]
                     this.district_str += this.c_district[i].name;
                 }
                 return this.district_str;
             }
         },
-        computed: {
-
-
-        }
+        computed: {}
 
     }
 </script>
