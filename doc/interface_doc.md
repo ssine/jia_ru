@@ -10,29 +10,29 @@
 
 **接口完成情况**:
 
-- [ ] `/gethouselist`
-- [ ] `/getrentallist`
-- [ ] `/data/user-info`
-- [ ] `/data/user-published`
-- [ ] `/data/user-asked`
+- [x] `/gethouselist`
+- [x] `/getrentallist`
+- [x] `/data/user-info`
+- [x] `/data/user-published`
+- [x] `/data/user-asked`
 - [x] `/query/user-exist`
 - [x] `/operation/login`
 - [x] `/operation/register`
 - [x] `/modify/password`
 - [x] `/modify/phone`
-- [ ] `/query/apply-notification`
+- [x] `/query/apply-notification`
 - [ ] `/query/provide-notification`
 - [ ] `/action/accept-notification`
 - [ ] `/action/reject-notification`
 - [x] `/data/house-info`
-- [ ] `/data/rental-info`
-- [ ] `/data/addhouse`
-- [ ] `/data/addrental`
-- [ ] `/modify/house` 与addhouse相同
-- [ ] `/modify/rental` 与addrental相同
+- [x] `/data/rental-info`
+- [x] `/data/addhouse`
+- [x] `/data/addrental`
+- [x] `/modify/house` 与addhouse相同
+- [x] `/modify/rental` 与addrental相同
 - [ ] `/data/deal-details/`
 - [ ] `/data/city-statistics/`
-- [ ] `/operation/apply-house/`
+- [x] `/operation/apply-house/`
 - [ ] `/data/uploadfile/`
 - [x] `/test`
 
