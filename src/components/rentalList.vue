@@ -34,7 +34,7 @@
                             ${{item.price}}
                         </div>
                         <router-link to="">
-                            <Button>查看更多</Button>
+                            <Button :to="'/rental?rental_id=' + item.rental_id">查看更多</Button>
                         </router-link>
                     </Col>
                     <Divider/>
@@ -67,33 +67,35 @@
         },
         computed: {},
         methods: {
-
-            get_house_list(data) {
+            update_house_list(data) {
                 console.log(data);
+                this.select_c = data;
+                this.get_house_list();
+            },
+            get_house_list() {
+
+                let post_data = {
+                    seq: this.page_num,
+                    district: this.select_c.district,
+                    min_floor: this.select_c.min_floor,
+                    max_floor: this.select_c.max_floor,
+                    house_type: this.select_c.d_type,
+                    elevator: this.select_c.elevator,
+                    orderby: this.select_c.orderby,
+                };
+                console.log(post_data);
                 this.axios.post(
-                    'http://39.105.181.135/operation/register/',
-                    Qs.stringify(this.$data.regForm)
+                    'http://39.105.181.135/getrentallist/',
+                    this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);
-                    switch (response.data.state) {
-                        case 100:
-                        case 120:
-                            window.location.href = './login';
-                            break;
-                        case 220:
-                            alert('注册失败，请重试。');
-                            break;
-                        case 221:
-                            alert('注册失败，用户名已被使用。');
-                            break;
-                        case 222:
-                            alert('注册失败，用户信息错误。');
-                            break;
-                    }
+                    this.house = response.data.houses;
                 });
             },
             update_page_num(pagenum) {
-                console.log(pagenum);
+                //console.log(pagenum);
+                this.page_num = pagenum;
+                this.get_house_list();
             },
 
         },

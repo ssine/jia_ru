@@ -14,7 +14,7 @@
                 </router-link>
             </MenuItem>
             <MenuItem name="2">
-                <router-link to="allrent">
+                <router-link to="allrental">
                     <Icon type="md-briefcase"/>
                     我要求租
                 </router-link>

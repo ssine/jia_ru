@@ -1,9 +1,6 @@
 <template>
     <div>
         <jiarunav></jiarunav>
-        <!--<div>-->
-        <!--<vue-speech lang="zh-CN" @onTranscriptionEnd="onEnd"/>-->
-        <!--</div>-->
         <rentalList></rentalList>
 
 

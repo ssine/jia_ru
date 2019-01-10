@@ -113,8 +113,8 @@
             }
         },
         created() {
-
-            console.log(this.$route.query.house_id);
+            this.house_id = this.$route.query.house_id;
+            //console.log(this.$route.query.house_id);
             //console.log(that.location);
 
         },

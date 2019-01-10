@@ -72,6 +72,7 @@
             <div v-show="page_num === 1" class="upload_img">
                 <Upload
                         multiple
+                        with-credentials="true"
                         type="drag"
                         action="http://39.105.181.135/data/uploadfile/">
                     <div style="padding: 20px 0">
@@ -121,7 +122,7 @@
                 </Form>
 
             </div>
-            <Button type="primary" @click="add_page()">下一步</Button>
+            <Button type="primary" @click="add_page()">{{btn_content}}</Button>
         </div>
     </div>
 </template>
@@ -154,8 +155,7 @@
                     ]
                 },
                 district_str: '',
-
-
+                btn_content: '下一步'
             }
         },
         methods: {

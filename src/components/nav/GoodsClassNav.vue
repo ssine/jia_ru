@@ -93,6 +93,25 @@
                         break;
                 }
 
+                let order = 0;
+                switch (this.d_type) {
+                    case "无排序":
+                        order = 0;
+                        break;
+                    case "价格升序":
+                        order = 1;
+                        break;
+                    case "价格降序":
+                        order = 2;
+                        break;
+                    case "面积升序":
+                        order = 3;
+                        break;
+                    case "面积降序":
+                        order = 4;
+                        break;
+                }
+
                 let data = {
                     district: this.district2str(this.d_district),
                     min_price: this.d_price[0],
@@ -102,6 +121,7 @@
                     min_floor: this.d_floor[0],
                     max_floor: this.d_floor[1],
                     d_type: house_type,
+                    orderby: order,
                     elevator: this.elevator === true ? 1 : 0,
                 };
                 this.$emit('update_house_list',data);

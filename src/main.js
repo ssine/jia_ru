@@ -20,7 +20,8 @@ import VueSpeech from 'vue-speech'
 
 axios.defaults.withCredentials = true;
 
-Vue.use(VueSpeech)
+
+Vue.use(VueSpeech);
 
 Vue.use(VueCropper);
 Vue.use(VueJsonp);
@@ -36,7 +37,6 @@ Vue.use(BaiduMap, {
     /* Visit http://lbsyun.baidu.com/apiconsole/key for details about app key. */
     ak: 'DA137DSpWRBxmO5LktIiHccpAGFi7kY4'
 })
-
 
 
 // 路由配置

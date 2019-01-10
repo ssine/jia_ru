@@ -22,7 +22,7 @@ const routers = [
         //component: (resolve) => require(['./components/GoodsList.vue'], resolve)
     },
     {
-        path: '/allrent',
+        path: '/allrental',
         meta: {
             title: '我要租房'
         },
@@ -44,6 +44,13 @@ const routers = [
         component: (resolve) => require(['./views/addhouse.vue'], resolve)
     },
     {
+        path: '/modifyhouse',
+        meta: {
+            title: '新增房屋'
+        },
+        component: (resolve) => require(['./views/modifyhouse.vue'], resolve)
+    },
+    {
         path: '/rental',
         meta: {
             title: '求租信息'
@@ -56,6 +63,13 @@ const routers = [
             title: '新增房屋'
         },
         component: (resolve) => require(['./views/addrental.vue'], resolve)
+    },
+    {
+        path: '/modifyrental',
+        meta: {
+            title: '新增房屋'
+        },
+        component: (resolve) => require(['./views/modifyrental.vue'], resolve)
     },
     {
         path: '/login',

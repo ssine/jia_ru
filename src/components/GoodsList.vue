@@ -87,7 +87,7 @@
                     max_price: this.select_c.max_price,
                     house_type: this.select_c.d_type,
                     elevator: this.select_c.elevator,
-                    orderby: this.select_c.min_floor,
+                    orderby: this.select_c.orderby,
                     max_area: this.select_c.max_area,
                     min_area: this.select_c.min_area,
                 };

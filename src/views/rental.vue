@@ -79,7 +79,7 @@
         name: "rantal",
         data() {
             return {
-                house_id: 5,
+                rental_id: 5,
                 house: {
                     "user_id": 567,
                     "district": "北京市海淀区西土城路",
@@ -100,8 +100,8 @@
             }
         },
         created() {
+            this.rental_id = this.$route.query.rental_id;
 
-            console.log(this.$route.query.house_id);
             //console.log(that.location);
 
         },
@@ -109,15 +109,14 @@
             let location_name_query = '';
 
             let post_data = {
-                house_id: this.house_id,
+                rental_id: this.rental_id,
             };
             this.axios.post(
-                'http://39.105.181.135/data/house-info/',
+                'http://39.105.181.135/data/rental-info/',
                 this.Qs.stringify(post_data)
             ).then((response) => {
                 console.log(response.data);
                 let house_type = response.data.type;
-                console.log(house_type, 'sas"');
                 switch (house_type) {
                     case 1:
                         response.data.type = "一居";
