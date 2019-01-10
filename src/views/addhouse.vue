@@ -160,7 +160,9 @@
         },
         methods: {
             add_page: function () {
-                this.page_num += 1;
+                if (this.page_num < 3) {
+                    this.page_num += 1;
+                }
                 console.log(this.c_district);
                 this.district_str = this.c_district2str();
             },

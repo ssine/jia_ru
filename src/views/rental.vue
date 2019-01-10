@@ -1,8 +1,6 @@
 <template>
     <div>
         <jiarunav></jiarunav>
-        <!--<GoodsDetail></GoodsDetail>-->
-        <swiper :imgs="house.imgs"></swiper>
         <div class="main_stage">
             <Row>
                 <Col span="16">
@@ -21,6 +19,9 @@
                                     <FormItem label="单元"><span class="house_detail">{{house.unit}}单元</span></FormItem>
                                     <FormItem label="楼层"><span class="house_detail">{{house.floor}}层</span></FormItem>
                                     <FormItem label="房型"><span class="house_detail">{{house.type}}</span></FormItem>
+                                    <FormItem label="电梯"><span class="house_detail">{{house.elevator}}也一样</span>
+                                    </FormItem>
+
                                 </Form>
                             </Col>
                         </Row>
@@ -75,7 +76,7 @@
             jiarunav,
             swiper,
         },
-        name: "house",
+        name: "rantal",
         data() {
             return {
                 house_id: 5,
@@ -83,17 +84,10 @@
                     "user_id": 567,
                     "district": "北京市海淀区西土城路",
                     "community": "金典小区",
-                    "unit": "8单元",
                     "type": "五居",
-                    "area": 20,
                     "floor": 8,
-                    "elevator": 1,
+                    "elevator": "有",
                     "description": "这房豪华",
-                    "imgs": [
-                        "https://a0.muscache.com/im/pictures/951a100f-cfbd-48ea-8954-91da4c0cf24c.jpg?aki_policy=xx_large",
-                        "https://a0.muscache.com/im/pictures/951a100f-cfbd-48ea-8954-91da4c0cf24c.jpg?aki_policy=xx_large",
-                        "https://a0.muscache.com/im/pictures/951a100f-cfbd-48ea-8954-91da4c0cf24c.jpg?aki_policy=xx_large"
-                    ],
                     "deposit": 2000,
                     "pay_method": "月",
                     "cost": 2500,
@@ -101,7 +95,6 @@
                     "register_time": "1959/4/12",
                     "modify_time": "1959/6/12"
                 },
-                rate_value: 3.5,
                 location: {},
                 location_name: '',
             }
@@ -212,6 +205,7 @@
         margin-bottom: 18px;
         list-style: none;
     }
+
     .stage_right {
         float: right;
         width: 376px !important;

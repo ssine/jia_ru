@@ -36,6 +36,20 @@ const routers = [
         component: (resolve) => require(['./views/addhouse.vue'], resolve)
     },
     {
+        path: '/rental',
+        meta: {
+            title: '求租信息'
+        },
+        component: (resolve) => require(['./views/rental.vue'], resolve)
+    },
+    {
+        path: '/addrental',
+        meta: {
+            title: '新增房屋'
+        },
+        component: (resolve) => require(['./views/addrental.vue'], resolve)
+    },
+    {
         path: '/login',
         name: 'login',
         meta: {

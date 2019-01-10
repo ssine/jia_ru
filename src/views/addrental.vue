@@ -1,140 +1,204 @@
 <template>
     <div>
-        <Sreach></Sreach>
 
-        <div class="container">
-
-            <!-- 商品标签导航 -->
-            <GoodsClassNav @update_house_list="update_house_list"></GoodsClassNav>
-            <!-- 商品展示容器 -->
-            <div class="">
-                <Row class="house-item" v-for="item in house">
-                    <Col span="8">
-                        <img :src="item.img"/>
-                    </Col>
-                    <Col span="8">
-                        <h3 class="item-name">
-                            {{item.name}}
-                        </h3>
-                        <img v-show="item.formaldehyde === 1"
-                             src="http://static8.ziroom.com/phoenix/pc/images/201810/img_deepbreath_unselected_90_2x2.png"/>
-                        <h4 class="item-description">
-                            {{item.description}}
-                        </h4>
-                        <div class="item-icon">
-                            <Tag v-for="iitem in item.tag" color="purple">{{iitem}}</Tag>
-                        </div>
-                        <h2 class="item-area">
-                            {{item.area}}平米
-                        </h2>
-                    </Col>
-
-                    <Col class="house_right" span="8">
-                        <div class="item-price">
-                            ${{item.price}}
-                        </div>
-                        <router-link to="">
-                            <Button>查看更多</Button>
-                        </router-link>
-                    </Col>
-                    <Divider/>
-
-                </Row>
+        <jiarunav></jiarunav>
+        <div class="main_stage">
+            <div>
+                <Steps :current="page_num">
+                    <Step title="填写基本信息" icon="ios-person"></Step>
+                    <Step title="上传照片" icon="ios-camera"></Step>
+                    <Step title="确认" icon="ios-mail"></Step>
+                </Steps>
             </div>
-            <div class="goods-page">
-                <Page :total="40" show-elevator show-sizer @on-change="update_page_num"/>
+
+            <Form v-show="page_num === 0" :label-position="left" :label-width="100" class="form">
+                <FormItem label="房屋地区" class="form_line">
+                    <al-cascader v-model="c_district"/>
+                </FormItem>
+
+                <FormItem label="房屋地址" class="form_line">
+
+                    <Input v-model="com_name" placeholder="新华" clearable style="width: 200px"/>
+                    小区
+                    <Input v-model="com_unit" placeholder="8" clearable style="width: 200px"/>
+                    单元
+                    <Input v-model="com_floor" placeholder="2" clearable style="width: 200px"/>
+                    层
+                </FormItem>
+                <FormItem label="房屋类型" class="form_line">
+
+                    <RadioGroup v-model="house_type">
+                        <Radio label="一居"></Radio>
+                        <Radio label="二居"></Radio>
+                        <Radio label="三居"></Radio>
+                        <Radio label="其他"></Radio>
+                    </RadioGroup>
+                </FormItem>
+                <FormItem label="房屋面积" class="form_line">
+
+                    <Input v-model="area" placeholder="30" style="width: 300px"/>
+                    平米
+                </FormItem>
+                <FormItem label="电梯" class="form_line">
+
+                    <Switch v-model="elevator"></Switch>
+                </FormItem>
+                <FormItem label="房屋描述" class="form_line">
+
+                    <Input v-model="description" type="textarea" :autosize="{minRows: 2,maxRows: 5}"
+                           placeholder="这是个好房子"/>
+                </FormItem>
+                <FormItem label="押金" class="form_line">
+                    <InputNumber :step="100" :min="300" v-model="deposit"></InputNumber>
+
+
+                </FormItem>
+                <FormItem label="支付方式" class="form_line">
+
+                    <RadioGroup v-model="pay_method">
+                        <Radio label="月付"></Radio>
+                        <Radio label="季付"></Radio>
+                        <Radio label="年付"></Radio>
+                    </RadioGroup>
+                </FormItem>
+
+                <FormItem label="租金" class="form_line">
+                    <InputNumber :step="100" :min="300" v-model="cost"></InputNumber>
+
+                </FormItem>
+
+
+            </Form>
+            <div v-show="page_num === 1" class="upload_img">
+                <Upload
+                        multiple
+                        type="drag"
+                        action="//jsonplaceholder.typicode.com/posts/">
+                    <div style="padding: 20px 0">
+                        <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+                        <p>Click or drag files here to upload</p>
+                    </div>
+                </Upload>
             </div>
+            <div v-show="page_num === 2" class="confrim">
+                <Form :label-position="left" :label-width="100" class="form">
+                    <FormItem label="房屋地区" class="form_line">
+                        {{district_str}}
+                    </FormItem>
+
+                    <FormItem label="房屋地址" class="form_line">
+                        {{com_name}}{{com_unit}}{{com_floor}}
+                    </FormItem>
+                    <FormItem label="房屋类型" class="form_line">
+                        {{house_type}}
+                    </FormItem>
+                    <FormItem label="房屋面积" class="form_line">
+                        {{area}}
+                        平米
+                    </FormItem>
+                    <FormItem label="电梯" class="form_line">
+                        <span v-show="elevator === true">有</span>
+                        <span v-show="elevator === false">无</span>
+                    </FormItem>
+                    <FormItem label="房屋描述" class="form_line">
+
+                        <p>{{description}}</p>
+                    </FormItem>
+                    <FormItem label="押金" class="form_line">
+                        {{deposit}}
+
+
+                    </FormItem>
+                    <FormItem label="支付方式" class="form_line">
+                        {{pay_method}}
+                    </FormItem>
+
+                    <FormItem label="租金" class="form_line">
+                        {{cost}}
+                    </FormItem>
+
+
+                </Form>
+
+            </div>
+            <Button type="primary" @click="add_page()">下一步</Button>
         </div>
-
-        <Footer></Footer>
-        <Spin size="large" fix v-if="isLoading"></Spin>
     </div>
 </template>
 
 <script>
-    import Sreach from '@/components/Sreach';
-    import GoodsClassNav from '@/components/nav/GoodsClassNav';
-    import Footer from '@/components/footer/Footer';
+    import jiarunav from '@/components/jiarunav.vue';
 
     export default {
-        name: 'allrent',
-
+        name: "addrental",
+        components: {
+            jiarunav,
+        },
         data() {
             return {
-                rental: [],
-            };
-        },
-        computed: {},
-        methods: {
+                page_num: 0,
+                c_district: [],
+                com_name: "",
+                com_unit: "",
+                com_floor: "",
+                house_type: "一居",
+                area: "",
+                elevator: true,
+                description: "",
+                deposit: 300,
+                pay_method: "月付",
+                cost: 300,
+                ruleValidate: {
+                    area: [
+                        {required: true, message: 'The name cannot be empty', trigger: 'change'}
+                    ]
+                },
+                district_str: '',
 
-            update_house_list(data) {
-                console.log(data);
-            },
-            update_page_num(pagenum) {
-                console.log(pagenum);
+
             }
         },
-        created() {
+        methods: {
+            add_page: function () {
+                if (this.page_num < 3) {
+                    this.page_num += 1;
+                }
+                console.log(this.c_district);
+                this.district_str = this.c_district2str();
+            },
+            c_district2str: function () {
+                console.log(this.c_district);
+                this.district_str = '';
 
-
-            this.axios.get('https://www.easy-mock.com/mock/5c2f26227106f779e7eaca4d/jr/gethouselist').then((response) => {
-                console.log(response.data);
-                this.house = response.data.house_list;
-                console.log(this.orderGoodsList);
-
-            })
+                for (var i = 0; i < this.c_district.length; i++) {
+                    // this.district_str += c_district[i]
+                    this.district_str += this.c_district[i].name;
+                }
+                return this.district_str;
+            }
         },
-        mounted() {
+        computed: {}
 
-        },
-        components: {
-            Sreach,
-            GoodsClassNav,
-            Footer
-        }
-    };
+    }
 </script>
 
 <style scoped>
-    .container {
-        margin: 15px auto;
+    .main_stage {
         width: 70%;
-        /*min-width: 1000px;*/
-    }
-
-    .house-item {
-
-    }
-
-    .house-item h3 {
-        font-size: 20px;
-        font-weight: 550;
-        position: relative;
-        display: inline-block;
-        line-height: 24px;
-        margin-bottom: 10px;
-    }
-
-    .item-price {
-        font-size: 30px;
-        color: #ffa000;
-        height: 32px;
-        line-height: 32px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-
-    .house_right {
-        text-align: center;
+        /*text-align: center;*/
         margin: auto;
     }
 
+    /*.form_line {*/
+    /*line-height: 40px;*/
+    /*}*/
 
-    .goods-page {
-        margin-top: 20px;
-        display: flex;
-        justify-content: flex-end;
+    .upload_img {
+        height: 400px;
     }
 
-    /* ---------------商品栏结束------------------- */
+    .form {
+        width: 800px;
+
+    }
 </style>

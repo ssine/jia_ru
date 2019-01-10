@@ -5,7 +5,7 @@
         <div class="container">
 
             <!-- 商品标签导航 -->
-            <GoodsClassNav @update_house_list="update_house_list"></GoodsClassNav>
+            <!--<GoodsClassNav @update_house_list="update_house_list"></GoodsClassNav>-->
             <!-- 商品展示容器 -->
             <div class="">
                 <Row class="house-item" v-for="item in house" :key="index">
@@ -53,7 +53,7 @@
 
 <script>
     import Sreach from '@/components/Sreach';
-    import GoodsClassNav from '@/components/nav/GoodsClassNav';
+    // import GoodsClassNav from '@/components/nav/GoodsClassNav';
     import Footer from '@/components/footer/Footer';
 
     export default {
@@ -105,7 +105,7 @@
         },
         components: {
             Sreach,
-            GoodsClassNav,
+            // GoodsClassNav,
             Footer
         }
     };
