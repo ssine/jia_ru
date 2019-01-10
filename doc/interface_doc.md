@@ -633,6 +633,28 @@ URL: `/data/addhouse`
 
 state
 
+**Request Example**:
+
+```json
+{
+    "district": "北京市海淀区西土城路",
+    "community": "金典小区",
+    "unit": "8单元",
+    "type": "五居",
+    "area": 20,
+    "floor": 8,
+    "elevator": 1,
+    "description": "这房豪华",
+    "imgs": [
+    "a.jpg",
+    "b.jpg"
+    ],
+    "deposit": 2000,
+    "pay_method": "月",
+    "cost": 2500
+}
+```
+
 ---
 
 URL: `/data/rental-info`
