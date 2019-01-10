@@ -18,6 +18,7 @@ import iviewArea from 'iview-area';
 import VueCropper from 'vue-cropper'
 import VueSpeech from 'vue-speech'
 
+axios.defaults.withCredentials = true;
 
 Vue.use(VueSpeech)
 
