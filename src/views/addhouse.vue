@@ -72,7 +72,7 @@
             <div v-show="page_num === 1" class="upload_img">
                 <Upload
                         multiple
-                        with-credentials="true"
+                        :with-credentials="true"
                         type="drag"
                         action="http://39.105.181.135/data/uploadfile/">
                     <div style="padding: 20px 0">
@@ -162,6 +162,13 @@
             add_page: function () {
                 if (this.page_num < 3) {
                     this.page_num += 1;
+                    if (this.page_num === 2) {
+                        this.btn_content = '提交';
+                    }
+                }
+                this.submitall();
+                if (this.page_num == 3) {
+                    this.submitall();
                 }
                 console.log(this.c_district);
                 this.district_str = this.c_district2str();
@@ -177,6 +184,32 @@
                     this.district_str += this.c_district[i].name;
                 }
                 return this.district_str;
+            },
+            submitall: function () {
+                let post_data = {
+                    district: this.c_district2str(),
+                    community: this.com_name,
+                    unit: this.com_unit,
+                    type: this.type,
+                    floor: this.com_floor,
+                    max_floor: this.select_c.max_floor,
+                    description: this.description,
+                    house_type: this.house_type,
+                    elevator: this.elevator,
+                    deposit: this.deposit,
+                    pay_method: this.pay_method,
+                    cost: this.cost,
+                    img: "xxxxxtest",
+
+                };
+                console.log(post_data);
+                this.axios.post(
+                    'http://39.105.181.135/getrentallist/',
+                    this.Qs.stringify(post_data)
+                ).then((response) => {
+                    console.log(response.data);
+                    this.house = response.data.houses;
+                });
             }
         },
         computed: {
