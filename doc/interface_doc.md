@@ -614,14 +614,6 @@ URL: `/data/addhouse`
 
 <table>
 <tr><th>key name</th><th>value description</th></tr>
-<tr><td>house_id</td><td>房屋的id</td></tr>
-</table>
-
-**Response**:
-
-<table>
-<tr><th>key name</th><th>value description</th></tr>
-<tr><td>user_id</td><td>发布用户id</td></tr>
 <tr><td>district</td><td>地区</td></tr>
 <tr><td>community</td><td>小区名</td></tr>
 <tr><td>unit</td><td>具体楼门号</td></tr>
@@ -636,28 +628,10 @@ URL: `/data/addhouse`
 <tr><td>cost</td><td>租金</td></tr>
 </table>
 
-**Response Example**:
 
-```json
-{
-    "user_id": 567,
-    "district": "北京市海淀区西土城路",
-    "community": "金典小区",
-    "unit": "8单元",
-    "type": "五居",
-    "area": 20,
-    "floor": 8,
-    "elevator": 1,
-    "description": "这房豪华",
-    "imgs": [
-    "a.jpg",
-    "b.jpg"
-    ],
-    "deposit": 2000,
-    "pay_method": "月",
-    "cost": 2500,
-}
-```
+**Response**:
+
+state
 
 ---
 
@@ -715,14 +689,6 @@ URL: `/data/addrental`
 
 <table>
 <tr><th>key name</th><th>value description</th></tr>
-<tr><td>rental_id</td><td>求租信息的id</td></tr>
-</table>
-
-**Response**:
-
-<table>
-<tr><th>key name</th><th>value description</th></tr>
-<tr><td>user_id</td><td>发布用户id</td></tr>
 <tr><td>district</td><td>地区</td></tr>
 <tr><td>community</td><td>小区名</td></tr>
 <tr><td>type</td><td>房屋类型</td></tr>
@@ -734,11 +700,14 @@ URL: `/data/addrental`
 <tr><td>cost</td><td>租金</td></tr>
 </table>
 
-**Response Example**:
+**Response**:
+
+state
+
+**Request Example**:
 
 ```json
 {
-    "user_id": 567,
     "district": "北京市海淀区西土城路",
     "community": "金典小区",
     "type": "五居",
