@@ -128,6 +128,7 @@
                     ]
                 },
                 district_str: '',
+                btn_content: '下一步'
 
 
             }
@@ -135,7 +136,13 @@
         methods: {
             add_page: function () {
                 if (this.page_num < 3) {
+                    if (this.page_num === 1) {
+                        this.btn_content = '提交';
+                    }
                     this.page_num += 1;
+                }
+                if (this.page_num == 3) {
+                    this.submitall();
                 }
                 console.log(this.c_district);
                 this.district_str = this.c_district2str();
@@ -144,11 +151,52 @@
                 console.log(this.c_district);
                 this.district_str = '';
 
-                for (var i = 0; i < this.c_district.length; i++) {
-                    // this.district_str += c_district[i]
+                for (let i = 0; i < this.c_district.length; i++) {
+                    if (i !== 0) {
+                        this.district_str += '#';
+                    }
                     this.district_str += this.c_district[i].name;
                 }
                 return this.district_str;
+            },
+            submitall: function () {
+                console.log('1233');
+                let type_num = 0;
+                switch (this.type) {
+                    case "一居":
+                        type_num = 1;
+                        break;
+                    case "二居":
+                        type_num = 2;
+                        break;
+                    case "三居":
+                        type_num = 3;
+                        break;
+                    case "四居":
+                        type_num = 4;
+                        break;
+                }
+
+                let post_data = {
+                    district: this.c_district2str(),
+                    community: this.com_name,
+                    type: type_num,
+                    floor: this.com_floor,
+                    description: this.description,
+                    elevator: this.elevator === true ? 1 : 0,
+                    deposit: this.deposit,
+                    pay_method: this.pay_method,
+                    cost: this.cost,
+
+                };
+                console.log(post_data);
+                console.log('1233');
+                this.axios.post(
+                    'http://39.105.181.135/data/addrental/',
+                    this.Qs.stringify(post_data)
+                ).then((response) => {
+                    console.log(response.data);
+                });
             }
         },
         computed: {}

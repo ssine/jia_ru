@@ -11,7 +11,7 @@
                 </Steps>
             </div>
 
-            <Form v-show="page_num === 0" :label-position="left" :label-width="100" class="form">
+            <Form v-show="page_num === 0" label-position="left" :label-width="100" class="form">
                 <FormItem label="房屋地区" class="form_line">
                     <al-cascader v-model="c_district"/>
                 </FormItem>
@@ -82,7 +82,7 @@
                 </Upload>
             </div>
             <div v-show="page_num === 2" class="confrim">
-                <Form :label-position="left" :label-width="100" class="form">
+                <Form label-position="left" :label-width="100" class="form">
                     <FormItem label="房屋地区" class="form_line">
                         {{district_str}}
                     </FormItem>
@@ -161,12 +161,11 @@
         methods: {
             add_page: function () {
                 if (this.page_num < 3) {
-                    this.page_num += 1;
-                    if (this.page_num === 2) {
+                    if (this.page_num === 1) {
                         this.btn_content = '提交';
                     }
+                    this.page_num += 1;
                 }
-                this.submitall();
                 if (this.page_num == 3) {
                     this.submitall();
                 }
@@ -186,16 +185,31 @@
                 return this.district_str;
             },
             submitall: function () {
+                console.log('1233');
+                let type_num = 0;
+                switch (this.type) {
+                    case "一居":
+                        type_num = 1;
+                        break;
+                    case "二居":
+                        type_num = 2;
+                        break;
+                    case "三居":
+                        type_num = 3;
+                        break;
+                    case "四居":
+                        type_num = 4;
+                        break;
+                }
+
                 let post_data = {
                     district: this.c_district2str(),
                     community: this.com_name,
                     unit: this.com_unit,
-                    type: this.type,
+                    type: type_num,
                     floor: this.com_floor,
-                    max_floor: this.select_c.max_floor,
                     description: this.description,
-                    house_type: this.house_type,
-                    elevator: this.elevator,
+                    elevator: this.elevator === true ? 1 : 0,
                     deposit: this.deposit,
                     pay_method: this.pay_method,
                     cost: this.cost,
@@ -203,12 +217,12 @@
 
                 };
                 console.log(post_data);
+                console.log('1233');
                 this.axios.post(
-                    'http://39.105.181.135/getrentallist/',
+                    'http://39.105.181.135/data/addhouse/',
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);
-                    this.house = response.data.houses;
                 });
             }
         },
