@@ -14,7 +14,7 @@
 - [x] `/getrentallist`
 - [x] `/data/user-info`
 - [x] `/data/user-published`
-- [x] `/data/user-asked`
+- [ ] `/data/user-asked`
 - [x] `/query/user-exist`
 - [x] `/operation/login`
 - [x] `/operation/register`
@@ -34,8 +34,9 @@
 - [ ] `/data/city-statistics/`
 - [x] `/operation/apply-house/`
 - [x] `/data/uploadfile/`
+- [ ] `/delete/house/`
+- [ ] `/delete/demand/`
 - [x] `/test`
-
 
 
 接口声明样例：
@@ -338,7 +339,7 @@ URL: `/data/user-published`
 
 URL: `/data/user-asked`
 
-查询当前用户发布的所有求租信息
+查询当前用户发布的所有求租需求
 
 **Request**:
 
@@ -353,8 +354,9 @@ URL: `/data/user-asked`
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>data</td><td>
 
-一个房屋的json数组，每一个房屋包含
+一个租房需求的json数组，每一个需求包含
 
+- id: 需求的id
 - location: 房屋地理位置
 - description: 房屋描述
 - rental: 租金
@@ -905,3 +907,33 @@ URL: `/data/uploadfile/`
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>url</td><td>文件url</td></tr>
 </table>
+
+---
+
+URL: `/delete/house/`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>id</td><td>房屋id</td></tr>
+</table>
+
+**Response**:
+
+state
+
+---
+
+URL: `/delete/demand/`
+
+**Request**:
+
+<table>
+<tr><th>key name</th><th>value description</th></tr>
+<tr><td>id</td><td>需求id</td></tr>
+</table>
+
+**Response**:
+
+state

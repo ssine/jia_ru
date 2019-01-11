@@ -19,11 +19,9 @@
                     我要求租
                 </router-link>
             </MenuItem>
-            <MenuItem id="center" name="3">
-                <router-link to="login">
+            <MenuItem id="center" name="3" @click.native="jump">
                     <Icon type="ios-people"/>
                     个人中心
-                </router-link>
             </MenuItem>
 
         </Menu>
@@ -50,6 +48,10 @@
                 console.log("voice");
                 console.log(lastSentence);
                 console.log(transcription);
+            },
+            jump: function () {
+                alert('1');
+                window.location.href='http://localhost:9999/#/stats';
             }
         }
     }
