@@ -79,6 +79,7 @@
             get_house_list() {
 
                 let post_data = {
+                    search_key: "",
                     seq: this.page_num,
                     district: this.select_c.district,
                     min_floor: this.select_c.min_floor,

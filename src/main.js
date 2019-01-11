@@ -20,7 +20,6 @@ import VueSpeech from 'vue-speech'
 
 axios.defaults.withCredentials = true;
 
-
 Vue.use(VueSpeech);
 
 Vue.use(VueCropper);
@@ -28,7 +27,8 @@ Vue.use(VueJsonp);
 Vue.use(VueRouter);
 Vue.use(iView);
 Vue.use(Vuex);
-Vue.use(VueAxios, axios);
+//Vue.use( axios);
+Vue.prototype.axios = axios;
 Vue.prototype.Qs = Qs;
 Vue.use(VueAwesomeSwiper);
 Vue.use(iviewArea);

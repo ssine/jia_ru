@@ -26,7 +26,7 @@
 
         </Menu>
         <div>
-            <vue-speech v-show="false" lang="zh-CN" @onTranscriptionEnd="onEnd"/>
+            <!--<vue-speech v-show="false" lang="zh-CN" @onTranscriptionEnd="onEnd"/>-->
         </div>
 
     </div>

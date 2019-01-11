@@ -219,7 +219,7 @@
                 console.log(post_data);
                 console.log('1233');
                 this.axios.post(
-                    '/api/data/addhouse/',
+                    '/api/create/addhouse/',
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);

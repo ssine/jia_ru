@@ -88,6 +88,15 @@ const routers = [
           hideInMenu: true
         },
         component: (resolve) => require(['./views/register.vue'], resolve)
-    }
+    },
+    {
+        path: '/rent_this_house',
+        meta: {
+            title: '申请房屋'
+        },
+        component: (resolve) => require(['./views/apply_house.vue'], resolve)
+    },
+
+
 ];
 export default routers;
