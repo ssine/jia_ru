@@ -163,7 +163,7 @@ export default {
           this.$Message.success('提交成功!');
           console.log(Qs.stringify(this.$data.regForm));
           this.axios.post(
-            'http://39.105.181.135/operation/register/',
+            '/api/operation/register/',
             Qs.stringify(this.$data.regForm)
           ).then((response) => {
             console.log(response.data);

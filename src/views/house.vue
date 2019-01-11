@@ -125,7 +125,7 @@
                 house_id: this.house_id,
             };
             this.axios.post(
-                'http://39.105.181.135/data/house-info/',
+                '/api/data/house-info/',
                 this.Qs.stringify(post_data)
             ).then((response) => {
                 console.log(response.data);

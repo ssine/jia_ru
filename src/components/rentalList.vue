@@ -85,7 +85,7 @@
                 };
                 console.log(post_data);
                 this.axios.post(
-                    'http://39.105.181.135/getrentallist/',
+                    '/api/getrentallist/',
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);

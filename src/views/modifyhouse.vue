@@ -73,7 +73,7 @@
                         multiple
                         :with-credentials="true"
                         type="drag"
-                        action="http://39.105.181.135/data/uploadfile/">
+                        action="/api/data/uploadfile/">
                     <div style="padding: 20px 0">
                         <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                         <p>Click or drag files here to upload</p>
@@ -202,7 +202,7 @@
                         break;
                 }
                 this.axios.post(
-                    'http://39.105.181.135//modify/house/',
+                    '/api//modify/house/',
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);
@@ -218,7 +218,7 @@
                 house_id: this.house_id,
             };
             this.axios.post(
-                'http://39.105.181.135/data/house-info/',
+                '/api/data/house-info/',
                 this.Qs.stringify(post_data)
             ).then((response) => {
                 console.log(response.data);

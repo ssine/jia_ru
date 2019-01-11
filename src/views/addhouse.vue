@@ -74,7 +74,7 @@
                         multiple
                         :with-credentials="true"
                         type="drag"
-                        action="http://39.105.181.135/data/uploadfile/">
+                        action="/api/data/uploadfile/">
                     <div style="padding: 20px 0">
                         <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                         <p>Click or drag files here to upload</p>
@@ -219,7 +219,7 @@
                 console.log(post_data);
                 console.log('1233');
                 this.axios.post(
-                    'http://39.105.181.135/data/addhouse/',
+                    '/api/data/addhouse/',
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);

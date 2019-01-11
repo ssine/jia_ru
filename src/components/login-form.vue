@@ -64,7 +64,7 @@ export default {
       this.$refs['loginForm'].validate((valid) => {
         if (valid) {
           this.axios.post(
-            'http://39.105.181.135/operation/login/',
+            '/api/operation/login/',
             Qs.stringify(this.$data.form)
           ).then((response) => {
             console.log(response.data);

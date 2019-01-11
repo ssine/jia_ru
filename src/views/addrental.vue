@@ -192,7 +192,7 @@
                 console.log(post_data);
                 console.log('1233');
                 this.axios.post(
-                    'http://39.105.181.135/data/addrental/',
+                    '/api/data/addrental/',
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);

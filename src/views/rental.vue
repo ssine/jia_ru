@@ -112,7 +112,7 @@
                 rental_id: this.rental_id,
             };
             this.axios.post(
-                'http://39.105.181.135/data/rental-info/',
+                '/api/data/rental-info/',
                 this.Qs.stringify(post_data)
             ).then((response) => {
                 console.log(response.data);

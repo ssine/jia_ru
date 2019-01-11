@@ -34,5 +34,18 @@ module.exports = merge(webpackBaseConfig, {
             template: './src/template/index.ejs',
             inject: false
         })
-    ]
+    ],
+    devServer: {
+        port: 8888,
+        proxy:{
+        //配置跨域
+        '/api': {//配置跨域的名字
+            target:'http://39.105.181.135/',//跨域的地址
+            changOrigin: true,//是否跨域
+            pathRewrite:{ //当前的名字
+                '^/api':'http://39.105.181.135'
+            }
+          }
+        }
+    }
 });
