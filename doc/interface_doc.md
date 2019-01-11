@@ -66,6 +66,7 @@ URL: `/gethouselist`
 <table>
 <tr><th>key name</th><th>value description</th></tr>
 <tr><td>seq</td><td>表示当前页码的序号 (0, 1, 2...)</td></tr>
+<tr><td>search_key</td><td>s搜索关键词</td></tr>
 <tr><td>district</td><td>筛选地区</td></tr>
 <tr><td>range_of_floor</td><td>楼层条件</td></tr>
 <tr><td>range_of_prices</td><td>价格条件</td></tr>
@@ -130,6 +131,7 @@ URL: `/gethouselist`
 {
     "seq":1,
     "orderby":0,
+    "search_key" : "小西天",
     "district":"山东省青岛市崂山区五一街道",
     "range_of_prices":[0,10000], 
     "range_of_area":[0,10000], 
@@ -173,6 +175,7 @@ URL: `/getrentallist`
 
 <table>
 <tr><th>key name</th><th>value description</th></tr>
+<tr><td>search_key</td><td>s搜索关键词</td></tr>
 <tr><td>seq</td><td>表示当前页码的序号 (0, 1, 2...)</td></tr>
 <tr><td>district</td><td>筛选地区</td></tr>
 <tr><td>range_of_floor</td><td>楼层条件</td></tr>
@@ -232,6 +235,7 @@ URL: `/getrentallist`
 ```json
 {
     "seq":1,
+    "search_key" : "小西天",
     "orderby":0,
     "district":"山东省青岛市崂山区五一街道",
     "range_of_floor":[0,5], 
