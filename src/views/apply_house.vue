@@ -61,6 +61,17 @@
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);
+                    switch (response.data.state) {
+                        case 160:
+                            this.$Message.success("申请成功，即将跳转到个人中心");
+                            setTimeout(function () {
+                                window.location.href = 'http://localhost:9999/#/stats';
+                            }, 2000);
+                            break;
+                        default:
+                            this.$Message.error("申请失败，请重试");
+                    }
+
 
                 });
             },

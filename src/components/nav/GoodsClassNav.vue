@@ -1,11 +1,11 @@
 <template>
 
-    <Form :label-position="left" :label-width="100" class="item-class-show">
+    <Form label-position="left" :label-width="100" class="item-class-show">
         <FormItem label="房屋地区" class="form_line">
             <al-cascader v-model="d_district"/>
         </FormItem>
         <FormItem label="价格范围" class="item-class-group">
-            <Slider v-model="d_price" :step="500" :max="10000" show-stops range></Slider>
+            <Slider v-model="d_price" :step="250" :max="10000" show-stops range></Slider>
         </FormItem>
         <FormItem label="面积范围:" class="item-class-group">
 
@@ -48,7 +48,7 @@
         //  components: {Radio},
         data() {
             return {
-                d_price: [1000, 5000],
+                d_price: [250, 5000],
                 d_area: [10, 100],
                 d_floor: [0, 100],
                 d_type: "不限",
@@ -64,7 +64,7 @@
 
                 for (let i = 0; i < district_json.length; i++) {
                     if (i !== 0) {
-                        this.district_str += '#';
+                        this.district_str += ' ';
                     }
                     district_str += district_json[i].name;
                 }

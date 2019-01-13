@@ -154,11 +154,11 @@
                         house_state = "未租";
                         break;
                 }
-                response.data.imgs = [
-                    "https://a0.muscache.com/im/pictures/951a100f-cfbd-48ea-8954-91da4c0cf24c.jpg?aki_policy=xx_large",
-                    "https://a0.muscache.com/im/pictures/951a100f-cfbd-48ea-8954-91da4c0cf24c.jpg?aki_policy=xx_large",
-                    "https://a0.muscache.com/im/pictures/951a100f-cfbd-48ea-8954-91da4c0cf24c.jpg?aki_policy=xx_large"
-                ];
+
+                for (var i = 0; i < response.data.imgs.length; i++) {
+                    response.data.imgs[i] = 'http://39.105.181.135/' + response.data.imgs[i];
+                }
+
                 this.house = response.data;
                 this.location_name = this.house.district + this.house.community;
 

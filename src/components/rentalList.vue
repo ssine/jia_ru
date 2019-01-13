@@ -8,7 +8,7 @@
             <rentalClassNav @update_house_list="update_house_list"></rentalClassNav>
             <!-- 商品展示容器 -->
             <div class="">
-                <Row class="house-item" v-for="item in house" :key="index">
+                <Row class="house-item" v-for="(item,index) in display_house" :key="index">
                     <Col span="8">
                         <img src="../images/zu.jpg"/>
                     </Col>
@@ -40,9 +40,15 @@
                     <Divider/>
 
                 </Row>
+                <Alert v-show="there_result" type="warning" show-icon>
+                    未搜索到结果
+                    <template slot="desc">
+                        根据相关法律法规和政策,部分搜索结果未予显示
+                    </template>
+                </Alert>
             </div>
             <div class="goods-page">
-                <Page :total="40" show-elevator show-sizer @on-change="update_page_num"/>
+                <Page :total="house_num" show-elevator show-sizer @on-change="update_page_num" :page-size="page_size"/>
             </div>
         </div>
 
@@ -62,7 +68,13 @@
         data() {
             return {
                 house: [],
-                house_type: {}
+                house_type: {},
+                house_num: 0,
+                page_size: 10,
+                allhouse: [],
+                display_house: [],
+                page_num: 1,
+                there_result: true,
             };
         },
         computed: {},
@@ -75,6 +87,7 @@
             get_house_list() {
 
                 let post_data = {
+                    search_key: '',
                     seq: this.page_num,
                     district: this.select_c.district,
                     min_floor: this.select_c.min_floor,
@@ -89,13 +102,24 @@
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);
-                    this.house = response.data.houses;
+                    this.allhouse = response.data.houses;
+                    this.house_num = this.allhouse.length;
+                    this.there_result = this.house_num <= 0;
+                    this.update_page_num(1);
                 });
             },
             update_page_num(pagenum) {
                 //console.log(pagenum);
                 this.page_num = pagenum;
-                this.get_house_list();
+                let start = (this.page_num - 1) * this.page_size;
+                let end = start + this.page_size;
+                this.display_house = [];
+                console.log(start, end);
+                for (var i = start; i < end && i < this.house_num; i++) {
+                    this.display_house.push(this.allhouse[i]);
+                    console.log(this.display_house);
+                }
+
             },
 
         },
@@ -103,7 +127,7 @@
 
         },
         mounted() {
-            get_house_list(data);
+            this.get_house_list();
         },
         components: {
             Sreach,
@@ -122,6 +146,10 @@
 
     .house-item {
 
+    }
+
+    img {
+        width: 200px;
     }
 
     .house-item h3 {

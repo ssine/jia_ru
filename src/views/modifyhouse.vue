@@ -55,9 +55,10 @@
                 <FormItem label="支付方式" class="form_line">
 
                     <RadioGroup v-model="pay_method">
-                        <Radio label="月付"></Radio>
-                        <Radio label="季付"></Radio>
-                        <Radio label="年付"></Radio>
+                        <Radio label="月"></Radio>
+                        <Radio label="季"></Radio>
+                        <Radio label="年"></Radio>
+                        (付)
                     </RadioGroup>
                 </FormItem>
 
@@ -178,7 +179,7 @@
 
                 for (let i = 0; i < this.c_district.length; i++) {
                     if (i !== 0) {
-                        this.district_str += '#';
+                        this.district_str += ' ';
                     }
                     this.district_str += this.c_district[i].name;
                 }

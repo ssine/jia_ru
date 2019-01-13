@@ -49,9 +49,10 @@
                 <FormItem label="支付方式" class="form_line">
 
                     <RadioGroup v-model="pay_method">
-                        <Radio label="月付"></Radio>
-                        <Radio label="季付"></Radio>
-                        <Radio label="年付"></Radio>
+                        <Radio label="月"></Radio>
+                        <Radio label="季"></Radio>
+                        <Radio label="年"></Radio>
+                        (付)
                     </RadioGroup>
                 </FormItem>
 
@@ -153,7 +154,7 @@
 
                 for (let i = 0; i < this.c_district.length; i++) {
                     if (i !== 0) {
-                        this.district_str += '#';
+                        this.district_str += ' ';
                     }
                     this.district_str += this.c_district[i].name;
                 }
@@ -196,6 +197,20 @@
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);
+                    switch (response.data.state) {
+                        case 250:
+                            alert("参数错误，请检查输入");
+                            this.page_num = 0;
+                            break;
+                        case 150:
+                            this.$Message.success("添加成功，即将跳转到个人中心");
+                            setTimeout(function () {
+                                window.location.href = 'http://localhost:9999/#/stats';
+                            }, 2000);
+                            break;
+                        default:
+                            this.$Message.error("添加失败，请重试");
+                    }
                 });
             }
         },

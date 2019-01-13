@@ -4,7 +4,7 @@
         <!--<div>-->
         <!--<vue-speech lang="zh-CN" @onTranscriptionEnd="onEnd"/>-->
         <!--</div>-->
-        <GoodsList></GoodsList>
+        <GoodsList :search_key="search_key"></GoodsList>
 
 
     </div>
@@ -18,6 +18,11 @@
         components: {
             jiarunav,
             GoodsList,
+        },
+        data() {
+            return {
+                search_key: '',
+            };
         },
         name: "allhouse",
         methods: {},

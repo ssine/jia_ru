@@ -8,9 +8,9 @@
             <GoodsClassNav @update_house_list="update_house_list"></GoodsClassNav>
             <!-- 商品展示容器 -->
             <div class="">
-                <Row class="house-item" v-for="item in house" :key="index">
+                <Row class="house-item" v-for="(item,index) in display_house" :key="index">
                     <Col span="8">
-                        <img :src="item.img"/>
+                        <img class="img" :src="'http://39.105.181.135/' + item.img"/>
                     </Col>
                     <Col span="8">
                         <h3 class="item-name">
@@ -22,7 +22,7 @@
                             {{item.description}}
                         </h4>
                         <div class="item-icon">
-                            <Tag v-for="iitem in item.tag" color="purple" :key="index">{{iitem}}</Tag>
+                            <Tag v-for="(iitem,iindex) in item.tag" color="purple" :key="iindex">{{iitem}}</Tag>
                         </div>
                         <h2 class="item-area">
                             {{item.area}}平米
@@ -40,9 +40,15 @@
                     <Divider/>
 
                 </Row>
+                <Alert v-show="there_result" type="warning" show-icon>
+                    未搜索到结果
+                    <template slot="desc">
+                        根据相关法律法规和政策,部分搜索结果未予显示
+                    </template>
+                </Alert>
             </div>
             <div class="goods-page">
-                <Page :total="40" show-elevator show-sizer @on-change="update_page_num"/>
+                <Page :total="house_num" show-elevator show-sizer @on-change="update_page_num" :page-size="page_size"/>
             </div>
         </div>
 
@@ -59,14 +65,17 @@
 
     export default {
         name: 'GoodsList',
-
         data() {
             return {
-                house: [],
+                allhouse: [],
+                display_house: [],
                 house_type: {},
                 page_num: 0,
                 //筛选条件
                 select_c: {},
+                house_num: 0,
+                page_size: 10,
+                there_result: true,
             };
         },
         computed: {},
@@ -79,7 +88,7 @@
             get_house_list() {
 
                 let post_data = {
-                    search_key: "",
+                    search_key: this.search_key,
                     seq: this.page_num,
                     district: this.select_c.district,
                     min_floor: this.select_c.min_floor,
@@ -98,13 +107,24 @@
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);
-                    this.house = response.data.houses;
+                    this.allhouse = response.data.houses;
+                    this.house_num = this.allhouse.length;
+                    this.there_result = this.house_num <= 0;
+                    this.update_page_num(1);
                 });
             },
             update_page_num(pagenum) {
                 //console.log(pagenum);
                 this.page_num = pagenum;
-                this.get_house_list();
+                let start = (this.page_num - 1) * this.page_size;
+                let end = start + this.page_size;
+                this.display_house = [];
+                console.log(start, end);
+                for (var i = start; i < end && i < this.house_num; i++) {
+                    this.display_house.push(this.allhouse[i]);
+                    console.log(this.display_house);
+                }
+
             },
 
         },
@@ -131,6 +151,10 @@
 
     .house-item {
 
+    }
+
+    img {
+        width: 300px;
     }
 
     .house-item h3 {

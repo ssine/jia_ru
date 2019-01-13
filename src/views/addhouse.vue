@@ -56,9 +56,10 @@
                 <FormItem label="支付方式" class="form_line">
 
                     <RadioGroup v-model="pay_method">
-                        <Radio label="月付"></Radio>
-                        <Radio label="季付"></Radio>
-                        <Radio label="年付"></Radio>
+                        <Radio label="月"></Radio>
+                        <Radio label="季"></Radio>
+                        <Radio label="年"></Radio>
+                        (付)
                     </RadioGroup>
                 </FormItem>
 
@@ -178,7 +179,7 @@
 
                 for (let i = 0; i < this.c_district.length; i++) {
                     if (i !== 0) {
-                        this.district_str += '#';
+                        this.district_str += ' ';
                     }
                     this.district_str += this.c_district[i].name;
                 }
@@ -207,22 +208,34 @@
                     community: this.com_name,
                     unit: this.com_unit,
                     type: type_num,
+                    area: this.area,
                     floor: this.com_floor,
                     description: this.description,
                     elevator: this.elevator === true ? 1 : 0,
                     deposit: this.deposit,
-                    pay_method: this.pay_method,
-                    cost: this.cost,
-                    img: "xxxxxtest",
+                    pay_method: this.pay_method.substr(0, 1),
+                    cost: this.cost
 
                 };
-                console.log(post_data);
-                console.log('1233');
                 this.axios.post(
-                    '/api/create/addhouse/',
+                    '/api/data/addhouse/',
                     this.Qs.stringify(post_data)
                 ).then((response) => {
                     console.log(response.data);
+                    switch (response.data.state) {
+                        case 250:
+                            alert("参数错误，请检查输入");
+                            this.page_num = 0;
+                            break;
+                        case 150:
+                            this.$Message.success("添加成功，即将跳转到个人中心");
+                            setTimeout(function () {
+                                window.location.href = 'http://localhost:9999/#/stats';
+                            }, 2000);
+                            break;
+                        default:
+                            this.$Message.error("添加失败，请重试");
+                    }
                 });
             }
         },
