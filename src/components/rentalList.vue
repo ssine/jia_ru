@@ -93,7 +93,7 @@
                     min_floor: this.select_c.min_floor,
                     max_floor: this.select_c.max_floor,
                     house_type: this.select_c.d_type,
-                    elevator: this.select_c.elevator,
+                    elevator: this.select_c.elevator == 1 ? 1 : 2,
                     orderby: this.select_c.orderby,
                 };
                 console.log(post_data);

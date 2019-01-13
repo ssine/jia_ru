@@ -96,7 +96,7 @@
                     min_price: this.select_c.min_price,
                     max_price: this.select_c.max_price,
                     house_type: this.select_c.d_type,
-                    elevator: this.select_c.elevator,
+                    elevator: this.select_c.elevator == 1 ? 1 : 2,
                     orderby: this.select_c.orderby,
                     max_area: this.select_c.max_area,
                     min_area: this.select_c.min_area,
