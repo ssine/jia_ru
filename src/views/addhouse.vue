@@ -214,8 +214,7 @@
                     elevator: this.elevator === true ? 1 : 0,
                     deposit: this.deposit,
                     pay_method: this.pay_method.substr(0, 1),
-                    cost: this.cost
-
+                    cost: this.cost,
                 };
                 this.axios.post(
                     '/api/data/addhouse/',
@@ -235,6 +234,8 @@
                             break;
                         default:
                             this.$Message.error("添加失败，请重试");
+                            this.page_num = 0;
+                            break;
                     }
                 });
             }
