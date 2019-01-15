@@ -7,7 +7,7 @@
         <Card icon="log-in" title="欢迎登录" :bordered="true">
           <div class="form-con">
             <login-form></login-form>
-            <p class="login-tip">输入任意用户名和密码即可</p>
+            <p class="login-tip">还没有账号？<a href="./register">注册</a></p>
           </div>
         </Card>
       </div>
