@@ -50,7 +50,6 @@
                 console.log(transcription);
             },
             jump: function () {
-                alert('1');
                 window.location.href='http://localhost:9999/#/stats';
             }
         }
