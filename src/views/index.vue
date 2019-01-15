@@ -9,10 +9,10 @@
       <ButtonGroup>
         <Button type="primary" size="large" onclick="window.open('./allhouse', '_self')">
           <Icon type="ios-arrow-back"></Icon>
-          我要租房
+            租房信息
         </Button>
-        <Button type="primary" size="large" onclick="window.open('./house', '_self')">
-          我要出租
+          <Button type="primary" size="large" onclick="window.open('./allrental', '_self')">
+              出租信息
           <Icon type="ios-arrow-forward"></Icon>
         </Button>
       </ButtonGroup>
