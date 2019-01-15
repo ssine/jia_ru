@@ -76,6 +76,7 @@
                 house_num: 0,
                 page_size: 10,
                 there_result: true,
+                search_key: '',
             };
         },
         computed: {},

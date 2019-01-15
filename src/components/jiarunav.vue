@@ -10,13 +10,13 @@
             <MenuItem name="1">
                 <router-link to="allhouse">
                     <Icon type="ios-home"/>
-                    我要租房
+                    租房信息
                 </router-link>
             </MenuItem>
             <MenuItem name="2">
                 <router-link to="allrental">
                     <Icon type="md-briefcase"/>
-                    我要求租
+                    求租信息
                 </router-link>
             </MenuItem>
             <MenuItem id="center" name="3" @click.native="jump">

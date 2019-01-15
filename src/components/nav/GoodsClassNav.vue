@@ -64,7 +64,7 @@
 
                 for (let i = 0; i < district_json.length; i++) {
                     if (i !== 0) {
-                        this.district_str += ' ';
+                        this.district_str += '\ ';
                     }
                     district_str += district_json[i].name;
                 }
