@@ -124,6 +124,7 @@
 
             </div>
             <Button type="primary" @click="add_page()">{{btn_content}}</Button>
+
         </div>
     </div>
 </template>

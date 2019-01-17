@@ -2,8 +2,6 @@
     <div>
         <jiarunav></jiarunav>
         <rentalList></rentalList>
-
-
     </div>
 </template>
 

@@ -26,7 +26,7 @@
 
         </Menu>
         <div>
-            <!--<vue-speech v-show="false" lang="zh-CN" @onTranscriptionEnd="onEnd"/>-->
+            <vue-speech v-show="false" lang="zh-CN" @onTranscriptionEnd="onEnd"/>
         </div>
 
     </div>
@@ -48,6 +48,21 @@
                 console.log("voice");
                 console.log(lastSentence);
                 console.log(transcription);
+                let search_str = lastSentence;
+                if (search_str.search("房屋信息") !== -1) {
+                    window.location.href = 'http://localhost:8888/allhouse'
+                }
+                if (search_str.search("求租信息") !== -1) {
+                    window.location.href = 'http://localhost:8888/allrental'
+                }
+                if (search_str.search("搜索房屋") !== -1) {
+                    let search_key = search_str.substr(4);
+                    window.location.href = 'http://localhost:8888/allhouse?search_key=' + search_key;
+                }
+                if (search_str.search("搜索求租") !== -1) {
+                    let search_key = search_str.substr(4);
+                    window.location.href = 'http://localhost:8888/allrental?search_key=' + search_key;
+                }
             },
             jump: function () {
                 window.location.href='http://localhost:9999/#/stats';
