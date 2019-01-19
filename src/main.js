@@ -26,17 +26,23 @@ Vue.use(VueCropper);
 Vue.use(VueJsonp);
 Vue.use(VueRouter);
 Vue.use(iView);
-Vue.use(Vuex);
+
 //Vue.use( axios);
 Vue.prototype.axios = axios;
 Vue.prototype.Qs = Qs;
+Vue.prototype.audio_play = function (tex) {
+    new Audio(
+        'http://tts.baidu.com/text2audio?cuid=baiduid&lan=zh&ctp=1&pdt=311&tex=' + tex + ''
+    ).play();
+};
+
 Vue.use(VueAwesomeSwiper);
 Vue.use(iviewArea);
 
 Vue.use(BaiduMap, {
     /* Visit http://lbsyun.baidu.com/apiconsole/key for details about app key. */
     ak: 'DA137DSpWRBxmO5LktIiHccpAGFi7kY4'
-})
+});
 
 
 // 路由配置

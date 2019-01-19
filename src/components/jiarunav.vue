@@ -64,7 +64,9 @@
                     window.location.href = 'http://localhost:8888/allrental?search_key=' + search_key;
                 }
             },
+
             jump: function () {
+                this.audio_paly("已跳转");
                 window.location.href='http://localhost:9999/#/stats';
             }
         }
